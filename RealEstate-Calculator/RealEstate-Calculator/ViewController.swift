@@ -9,13 +9,22 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var rentTextField: UITextField!
+    @IBOutlet weak var taxTextField: UITextField!
     
     
+    @IBOutlet weak var totalIncomeTextField: UITextField!
     
     
-    
-    
+    @IBAction func calculateVariables(_ sender: Any) {
+        if let rentIncome = Double(rentTextField.text!) {
+            let rentTax = Double(taxTextField.text!)
+            
+            let totalIncomeMath = (rentIncome * 12) - (rentTax! * 12)
+            totalIncomeTextField.text = String(format: "%.2f", totalIncomeMath)
+        }
+    }
     
     
     
