@@ -33,9 +33,16 @@ class ListPropertiesTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath)
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath)
+//
+//        cell.textLabel?.text = "Yay it's working"
+//
+//        return cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath) as! ListPropertiesTableViewCell
         
-        cell.textLabel?.text = "Yay it's working"
+        // 2
+        cell.propertyNameLabel.text = "Property Name"
+        cell.propertyWorthLabel.text = "Property Worth"
         
         return cell
     }

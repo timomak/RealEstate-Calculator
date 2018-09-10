@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class PropertyInputController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var rentTextField: UITextField!
     @IBOutlet weak var taxTextField: UITextField!
