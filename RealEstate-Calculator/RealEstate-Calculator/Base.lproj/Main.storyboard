@@ -74,132 +74,111 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VAm-ez-aIA">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VAm-ez-aIA">
                                 <rect key="frame" x="77" y="219" width="45" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="41P-Hc-hsS" userLabel="Name Text Field">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="1" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="41P-Hc-hsS" userLabel="Name Text Field">
                                 <rect key="frame" x="190" y="214" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rent" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aus-FU-HZH">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rent" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aus-FU-HZH">
                                 <rect key="frame" x="77" y="271" width="36" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7ij-sq-uf1" userLabel="Rent Text Field">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7ij-sq-uf1" userLabel="Rent Text Field">
                                 <rect key="frame" x="190" y="266" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tax" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2pZ-xT-fce">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tax" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2pZ-xT-fce">
                                 <rect key="frame" x="77" y="326" width="27" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hyq-xY-MYP" userLabel="Tax Text Field">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hyq-xY-MYP" userLabel="Tax Text Field">
                                 <rect key="frame" x="190" y="321" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mJy-is-tOe">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mJy-is-tOe">
                                 <rect key="frame" x="155" y="399" width="64" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Calculate"/>
                                 <connections>
                                     <action selector="calculateVariables:" destination="BYZ-38-t0r" eventType="touchUpInside" id="U7a-vC-1PH"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yearly Rent Income" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rFA-SD-zum">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Yearly Rent Income" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rFA-SD-zum">
                                 <rect key="frame" x="26" y="495" width="147" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ERF-r1-nrH" userLabel="Yearly Rent Income Text Field">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ERF-r1-nrH" userLabel="Yearly Rent Income Text Field">
                                 <rect key="frame" x="190" y="490" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Yearly Tax" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NUr-Jh-vbJ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Yearly Tax" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NUr-Jh-vbJ">
                                 <rect key="frame" x="60" y="550" width="78" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hI6-0I-Pjw" userLabel="Yearly Tax Text Field">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hI6-0I-Pjw" userLabel="Yearly Tax Text Field">
                                 <rect key="frame" x="190" y="545" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Income" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dj1-2g-cOl">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Total Income" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dj1-2g-cOl">
                                 <rect key="frame" x="46" y="616" width="98" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eEh-KV-1Yq" userLabel="Total Income Text Field">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eEh-KV-1Yq" userLabel="Total Income Text Field">
                                 <rect key="frame" x="190" y="611" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="rFA-SD-zum" firstAttribute="centerY" secondItem="ERF-r1-nrH" secondAttribute="centerY" id="0FU-Vz-1k6"/>
-                            <constraint firstItem="rFA-SD-zum" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="26" id="0e9-I6-GKY"/>
-                            <constraint firstItem="41P-Hc-hsS" firstAttribute="trailing" secondItem="7ij-sq-uf1" secondAttribute="trailing" id="4gF-HU-3sv"/>
-                            <constraint firstItem="Dj1-2g-cOl" firstAttribute="centerY" secondItem="eEh-KV-1Yq" secondAttribute="centerY" id="5EL-0P-zM8"/>
-                            <constraint firstItem="VAm-ez-aIA" firstAttribute="leading" secondItem="aus-FU-HZH" secondAttribute="leading" id="7y2-tP-5ft"/>
-                            <constraint firstItem="aus-FU-HZH" firstAttribute="leading" secondItem="2pZ-xT-fce" secondAttribute="leading" id="96Y-za-UqM"/>
-                            <constraint firstItem="7ij-sq-uf1" firstAttribute="trailing" secondItem="hyq-xY-MYP" secondAttribute="trailing" id="AKV-rf-DJp"/>
-                            <constraint firstItem="7ij-sq-uf1" firstAttribute="top" secondItem="41P-Hc-hsS" secondAttribute="bottom" constant="22" id="CFI-pN-gcG"/>
-                            <constraint firstItem="ERF-r1-nrH" firstAttribute="leading" secondItem="rFA-SD-zum" secondAttribute="trailing" constant="17" id="FiN-Jc-z2e"/>
-                            <constraint firstItem="mJy-is-tOe" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="GnC-Gf-MX8"/>
-                            <constraint firstItem="hyq-xY-MYP" firstAttribute="trailing" secondItem="ERF-r1-nrH" secondAttribute="trailing" id="Hk2-Ai-Q6t"/>
-                            <constraint firstItem="41P-Hc-hsS" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="126" id="LPe-fS-PMj"/>
-                            <constraint firstItem="ERF-r1-nrH" firstAttribute="top" secondItem="mJy-is-tOe" secondAttribute="bottom" constant="61" id="NNT-ae-LWh"/>
-                            <constraint firstItem="ERF-r1-nrH" firstAttribute="trailing" secondItem="hI6-0I-Pjw" secondAttribute="trailing" id="Nm0-Ln-iW4"/>
-                            <constraint firstItem="mJy-is-tOe" firstAttribute="top" secondItem="hyq-xY-MYP" secondAttribute="bottom" constant="48" id="OtS-La-PsH"/>
-                            <constraint firstItem="hyq-xY-MYP" firstAttribute="top" secondItem="7ij-sq-uf1" secondAttribute="bottom" constant="25" id="PfP-e4-pvE"/>
-                            <constraint firstItem="aus-FU-HZH" firstAttribute="centerX" secondItem="Dj1-2g-cOl" secondAttribute="centerX" id="RBf-tH-nYC"/>
-                            <constraint firstItem="VAm-ez-aIA" firstAttribute="centerY" secondItem="41P-Hc-hsS" secondAttribute="centerY" id="VVv-ag-Ebk"/>
-                            <constraint firstItem="hI6-0I-Pjw" firstAttribute="leading" secondItem="eEh-KV-1Yq" secondAttribute="leading" id="c1J-Xd-Wbc"/>
-                            <constraint firstItem="eEh-KV-1Yq" firstAttribute="top" secondItem="hI6-0I-Pjw" secondAttribute="bottom" constant="36" id="dw5-FJ-w4O"/>
-                            <constraint firstItem="hI6-0I-Pjw" firstAttribute="top" secondItem="ERF-r1-nrH" secondAttribute="bottom" constant="25" id="e7Y-P1-PaX"/>
-                            <constraint firstItem="hI6-0I-Pjw" firstAttribute="trailing" secondItem="eEh-KV-1Yq" secondAttribute="trailing" id="fCQ-If-UyL"/>
-                            <constraint firstItem="VAm-ez-aIA" firstAttribute="centerX" secondItem="rFA-SD-zum" secondAttribute="centerX" id="gXh-JL-2ip"/>
-                            <constraint firstItem="41P-Hc-hsS" firstAttribute="leading" secondItem="7ij-sq-uf1" secondAttribute="leading" id="gaH-33-FL4"/>
-                            <constraint firstItem="7ij-sq-uf1" firstAttribute="leading" secondItem="hyq-xY-MYP" secondAttribute="leading" id="ggw-cD-9gc"/>
-                            <constraint firstItem="rFA-SD-zum" firstAttribute="centerX" secondItem="NUr-Jh-vbJ" secondAttribute="centerX" id="ihI-0J-pnT"/>
-                            <constraint firstItem="aus-FU-HZH" firstAttribute="centerY" secondItem="7ij-sq-uf1" secondAttribute="centerY" id="mrH-2Z-PLW"/>
-                            <constraint firstItem="ERF-r1-nrH" firstAttribute="leading" secondItem="hI6-0I-Pjw" secondAttribute="leading" id="puY-3x-YOF"/>
-                            <constraint firstItem="hyq-xY-MYP" firstAttribute="leading" secondItem="ERF-r1-nrH" secondAttribute="leading" id="szJ-Ad-xZ4"/>
-                            <constraint firstItem="NUr-Jh-vbJ" firstAttribute="centerY" secondItem="hI6-0I-Pjw" secondAttribute="centerY" id="tUZ-hq-dHP"/>
-                            <constraint firstItem="2pZ-xT-fce" firstAttribute="centerY" secondItem="hyq-xY-MYP" secondAttribute="centerY" id="vMM-DE-JaN"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="41P-Hc-hsS" secondAttribute="trailing" constant="88" id="zzS-Z6-aM2"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Property Stats" id="cVa-zu-vbC">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="BOr-Zj-Nhy">
                             <connections>
-                                <segue destination="lFk-n1-PPy" kind="unwind" unwindAction="unwindToListNotesViewControllerWithSegue:" id="YLp-4J-k0K"/>
+                                <segue destination="lFk-n1-PPy" kind="unwind" identifier="Cancel" unwindAction="unwindToListNotesViewControllerWithSegue:" id="YLp-4J-k0K"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="fzR-6k-xpF">
                             <connections>
-                                <segue destination="lFk-n1-PPy" kind="unwind" unwindAction="unwindToListNotesViewControllerWithSegue:" id="XAE-vB-hlf"/>
+                                <segue destination="lFk-n1-PPy" kind="unwind" identifier="Save" unwindAction="unwindToListNotesViewControllerWithSegue:" id="XAE-vB-hlf"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

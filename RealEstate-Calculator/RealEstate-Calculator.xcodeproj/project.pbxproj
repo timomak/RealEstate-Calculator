@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F303C5ED214756930019FC25 /* Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F303C5EC214756930019FC25 /* Properties.swift */; };
 		F32C62482146293E0018518C /* ListPropertiesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32C62472146293E0018518C /* ListPropertiesTableViewController.swift */; };
 		F34140D42147377E00A2ED29 /* ListPropertiesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34140D32147377E00A2ED29 /* ListPropertiesTableViewCell.swift */; };
 		F3E282A121460EB9009CE24C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E282A021460EB9009CE24C /* AppDelegate.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F303C5EC214756930019FC25 /* Properties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Properties.swift; sourceTree = "<group>"; };
 		F32C62472146293E0018518C /* ListPropertiesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPropertiesTableViewController.swift; sourceTree = "<group>"; };
 		F34140D32147377E00A2ED29 /* ListPropertiesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPropertiesTableViewCell.swift; sourceTree = "<group>"; };
 		F3E2829D21460EB9009CE24C /* RealEstate-Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RealEstate-Calculator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -39,6 +41,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F303C5EB214756790019FC25 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F303C5EC214756930019FC25 /* Properties.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		F330436421473B9C008D911B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -67,6 +77,7 @@
 		F3E2829F21460EB9009CE24C /* RealEstate-Calculator */ = {
 			isa = PBXGroup;
 			children = (
+				F303C5EB214756790019FC25 /* Models */,
 				F3E282A021460EB9009CE24C /* AppDelegate.swift */,
 				F330436421473B9C008D911B /* Controllers */,
 				F34140D32147377E00A2ED29 /* ListPropertiesTableViewCell.swift */,
@@ -152,6 +163,7 @@
 				F34140D42147377E00A2ED29 /* ListPropertiesTableViewCell.swift in Sources */,
 				F32C62482146293E0018518C /* ListPropertiesTableViewController.swift in Sources */,
 				F3E282A321460EB9009CE24C /* PropertyInputController.swift in Sources */,
+				F303C5ED214756930019FC25 /* Properties.swift in Sources */,
 				F3E282A121460EB9009CE24C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
