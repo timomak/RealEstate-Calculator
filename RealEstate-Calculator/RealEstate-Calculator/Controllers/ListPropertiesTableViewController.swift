@@ -19,8 +19,29 @@ struct Headline {
 
 class ListPropertiesTableViewController: UITableViewController {
     
-    
+    @IBAction func unwindToListNotesViewController(segue: UIStoryboardSegue) {
+        
+        // for now, simply defining the method is sufficient.
+        // we'll add code later
+        
+    }
     // TODO: https://www.makeschool.com/academy/track/learn-to-program-in-swift-and-get-started-creating-your-own-apps-and-games-DEM=/learn-how-to-build-make-school-notes--v2/intro-table-view-0VM=
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+        
+        
+        if let identifier = segue.identifier {
+            print("Identifier: ",identifier)
+            if identifier == "displayProperty" {
+                print("Table view cell tapped")
+            } else if segue.identifier == "addProperty" {
+                print("+ button tapped")
+            } else {
+                print("Identifier: ",identifier)
+            }
+        }
+    }
     
     // 1
     override func numberOfSections(in tableView: UITableView) -> Int {
