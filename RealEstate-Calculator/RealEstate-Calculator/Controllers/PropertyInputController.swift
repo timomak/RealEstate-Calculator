@@ -46,25 +46,23 @@ class PropertyInputController: UIViewController {
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let identifier = segue.identifier {
-            if identifier == "Cancel" {
-                print("Cancel button tapped")
-            } else if identifier == "Save" {
-                print("Save button tapped")
-                
-                // 1
-                let property = Property()
-                // 2
+        let listPropertiesTableViewController = segue.destination as! ListPropertiesTableViewController
+        if segue.identifier == "Save" {
+            print("Save button tapped")
+            
+            
+            if let property = property {
                 property.propertyName = nameTextField.text ?? ""
                 property.propertyRent = Double(rentTextField.text!)!
-                // 3
                 property.propertyTax = Double(taxTextField.text!)!
+                listPropertiesTableViewController.tableView.reloadData()
+            } else {
+                let newProperty = Property()
+                newProperty.propertyName = nameTextField.text ?? ""
+                newProperty.propertyRent = Double(rentTextField.text!)!
+                newProperty.propertyTax = Double(taxTextField.text!)!
                 
-                let listPropertiesTableViewController = segue.destination as! ListPropertiesTableViewController
-                // 2
-                
-                print("New Property: ", property.propertyName,property.propertyRent, property.propertyTax)
-                listPropertiesTableViewController.properties.append(property)
+                listPropertiesTableViewController.properties.append(newProperty)
             }
         }
     }
