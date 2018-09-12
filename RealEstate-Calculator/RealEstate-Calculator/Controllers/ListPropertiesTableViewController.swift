@@ -24,6 +24,20 @@ class ListPropertiesTableViewController: UITableViewController {
     }
     // TODO: https://www.makeschool.com/academy/track/learn-to-program-in-swift-and-get-started-creating-your-own-apps-and-games-DEM=/learn-how-to-build-make-school-notes--v2/intro-table-view-0VM=
     
+    // 1
+//    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+//        return true
+//    }
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == UITableViewCellEditingStyle.delete {
+            
+            self.properties.remove(at: indexPath.row)
+            
+            self.tableView.reloadData()
+        }
+        
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 
         
