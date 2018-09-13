@@ -6,10 +6,11 @@
 //  Copyright © 2018 Timofey Makhlay. All rights reserved.
 //
 
-import UIKit
+import Foundation
+import RealmSwift
 
-class Property {
-    var propertyName = ""
-    var propertyRent: Double = 0.0
-    var propertyTax: Double = 0.0
+class Property: Object {
+    @objc dynamic var propertyName = ""
+    @objc dynamic var propertyRent: Double = 0.0
+    @objc dynamic var propertyTax: Double = 0.0
 }

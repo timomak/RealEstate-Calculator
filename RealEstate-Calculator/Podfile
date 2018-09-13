@@ -1,0 +1,4 @@
+target ‘RealEstate-Calculator’ do
+    use_frameworks!
+    pod ‘RealmSwift’
+end
