@@ -7,10 +7,10 @@
 //
 import Foundation
 import UIKit
-import RealmSwift
+
 
 class ListPropertiesTableViewController: UITableViewController {
-    var properties: Results<Property>! {
+    var properties = [Property](){
         didSet {
             tableView.reloadData()
         }
@@ -32,9 +32,9 @@ class ListPropertiesTableViewController: UITableViewController {
         
         if editingStyle == UITableViewCellEditingStyle.delete {
             
-            RealmHelper.deleteProperty(property: properties[indexPath.row])
+            self.properties.remove(at: indexPath.row)
             
-            properties = RealmHelper.retrieveProperty()
+            self.tableView.reloadData()
         }
         
     }
@@ -66,7 +66,7 @@ class ListPropertiesTableViewController: UITableViewController {
 
     // 2
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return RealmHelper.countProperties()
+        return properties.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
