@@ -34,4 +34,8 @@ class RealmHelper {
         let realm = try! Realm()
         return realm.objects(Property.self).sorted(byKeyPath: "propertyRent", ascending: false)
     }
+    static func countProperties() -> Int {
+        let realm = try! Realm()
+        return realm.objects(Property.self).count
+    }
 }

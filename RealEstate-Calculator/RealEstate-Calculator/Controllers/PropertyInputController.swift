@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import RealmSwift
 
 class PropertyInputController: UIViewController {
 //    var properties = [Property]()
     var property: Property?
+    var properties: Results<Property>!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var rentTextField: UITextField!
     @IBOutlet weak var taxTextField: UITextField!
@@ -52,18 +54,22 @@ class PropertyInputController: UIViewController {
             
             
             if let property = property {
-                property.propertyName = nameTextField.text ?? ""
-                property.propertyRent = Double(rentTextField.text!)!
-                property.propertyTax = Double(taxTextField.text!)!
-                listPropertiesTableViewController.tableView.reloadData()
-            } else {
                 let newProperty = Property()
                 newProperty.propertyName = nameTextField.text ?? ""
                 newProperty.propertyRent = Double(rentTextField.text!)!
                 newProperty.propertyTax = Double(taxTextField.text!)!
                 
-                listPropertiesTableViewController.properties.append(newProperty)
+                RealmHelper.updateProperty(propertyToBeUpdated: property, newProperty: newProperty)
+            } else {
+                
+            let property = Property()
+                property.propertyName = nameTextField.text ?? ""
+                property.propertyRent = Double(rentTextField.text!)!
+                property.propertyTax = Double(taxTextField.text!)!
+                RealmHelper.addProperty(property: property)
             }
+            
+            listPropertiesTableViewController.properties = RealmHelper.retrieveProperty()
         }
     }
     
@@ -73,7 +79,7 @@ class PropertyInputController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+        RealmHelper.retrieveProperty()
         self.hideKeyboardWhenTappedAround()
     }
 
