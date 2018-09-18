@@ -11,36 +11,52 @@ import UIKit
 class PropertyInputController: UIViewController {
 //    var properties = [Property]()
     var property: Property?
+    
+    // User has to input these items.
     @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var buyingPriceTextField: UITextField!
     @IBOutlet weak var rentTextField: UITextField!
-    @IBOutlet weak var taxTextField: UITextField!
+    @IBOutlet weak var buildingTaxTextField: UITextField!
+    @IBOutlet weak var propertyTaxTextField: UITextField!
+    @IBOutlet weak var yearlyFeesTextField: UITextField!
+    @IBOutlet weak var valueGrowthTextField: UITextField!
     
-    
-    @IBOutlet weak var totalIncomeTextField: UITextField!
+    // App will calculate.
+    @IBOutlet weak var totalTaxTextField: UITextField!
+    @IBOutlet weak var afterTaxAndFeesIncomeYearlyTextField: UITextField!
+    @IBOutlet weak var afterTaxAndFeesIncomeMonthlyTextField: UITextField!
+    @IBOutlet weak var incomeYearlyBeforeTaxTextField: UITextField!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
         if let property = property {
             // 2
-            nameTextField.text = property.propertyName
-            rentTextField.text = String(property.propertyRent)
-            taxTextField.text = String(property.propertyTax)
+            nameTextField.text = property.name
+            buyingPriceTextField.text = String(property.buyingPrice)
+            rentTextField.text = String(property.rent)
+            buildingTaxTextField.text = String(property.buildingTax)
+            propertyTaxTextField.text = String(property.propertyTax)
+            yearlyFeesTextField.text = String(property.yearlyFees)
+            valueGrowthTextField.text = String(property.valueGrowth)
+            
         } else {
             // 3
             nameTextField.text = ""
+            buyingPriceTextField.text = ""
             rentTextField.text = ""
-            taxTextField.text = ""
+            buildingTaxTextField.text = ""
+            propertyTaxTextField.text = ""
+            yearlyFeesTextField.text = ""
+            valueGrowthTextField.text = ""
         }
     }
     
-    
-    @IBAction func calculateVariables(_ sender: Any) {
-        if let rentIncome = Double(rentTextField.text!) {
-            let rentTax = Double(taxTextField.text!)
-            
-            let totalIncomeMath = (rentIncome * 12) - (rentTax! * 12)
-            totalIncomeTextField.text = String(format: "%.2f", totalIncomeMath)
+    func calculateVariables() {
+        print("calculating")
+        if let buildingTax = Double(buildingTaxTextField.text!), let propertyTax = Double(propertyTaxTextField.text!) {
+            let totalRent = buildingTax + propertyTax
+            totalTaxTextField.text = String(format: "%.2f", totalRent)
         }
     }
     
@@ -68,13 +84,16 @@ class PropertyInputController: UIViewController {
     }
     
     
-    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        calculateVariables()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         self.hideKeyboardWhenTappedAround()
+        calculateVariables()
     }
 
     override func didReceiveMemoryWarning() {
