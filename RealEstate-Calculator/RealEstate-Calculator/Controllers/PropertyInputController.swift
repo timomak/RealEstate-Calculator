@@ -29,7 +29,7 @@ class PropertyInputController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        calculateVariables()
         if let property = property {
             // 2
             nameTextField.text = property.name
@@ -55,28 +55,35 @@ class PropertyInputController: UIViewController {
     func calculateVariables() {
         print("calculating")
         if let buildingTax = Double(buildingTaxTextField.text!), let propertyTax = Double(propertyTaxTextField.text!) {
-            let totalRent = buildingTax + propertyTax
-            totalTaxTextField.text = String(format: "%.2f", totalRent)
+            let totalTax = buildingTax + propertyTax
+            totalTaxTextField.text = String(format: "%.2f", totalTax)
         }
     }
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        calculateVariables()
         let listPropertiesTableViewController = segue.destination as! ListPropertiesTableViewController
         if segue.identifier == "Save" {
             print("Save button tapped")
             
             
             if let property = property {
-                property.propertyName = nameTextField.text ?? ""
-                property.propertyRent = Double(rentTextField.text!)!
-                property.propertyTax = Double(taxTextField.text!)!
+                property.name = nameTextField.text ?? ""
+                property.rent = Double(rentTextField.text!)!
+                property.buildingTax = Double(buildingTaxTextField.text!)!
+                property.propertyTax = Double(propertyTaxTextField.text!)!
+                property.yearlyFees = Double(yearlyFeesTextField.text!)!
+                property.valueGrowth = Double(valueGrowthTextField.text!)!
                 listPropertiesTableViewController.tableView.reloadData()
             } else {
                 let newProperty = Property()
-                newProperty.propertyName = nameTextField.text ?? ""
-                newProperty.propertyRent = Double(rentTextField.text!)!
-                newProperty.propertyTax = Double(taxTextField.text!)!
+                newProperty.name = nameTextField.text ?? ""
+                newProperty.rent = Double(rentTextField.text!)!
+                newProperty.buildingTax = Double(buildingTaxTextField.text!)!
+                newProperty.propertyTax = Double(propertyTaxTextField.text!)!
+                newProperty.yearlyFees = Double(yearlyFeesTextField.text!)!
+                newProperty.valueGrowth = Double(valueGrowthTextField.text!)!
                 
                 listPropertiesTableViewController.properties.append(newProperty)
             }

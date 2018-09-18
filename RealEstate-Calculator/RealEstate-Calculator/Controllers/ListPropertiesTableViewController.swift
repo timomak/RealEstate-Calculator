@@ -79,8 +79,8 @@ class ListPropertiesTableViewController: UITableViewController {
         
         
         // 2
-        cell.propertyNameLabel.text = property.propertyName
-        cell.propertyWorthLabel.text = String(property.propertyRent)
+        cell.propertyNameLabel.text = property.name
+        cell.propertyWorthLabel.text = String(property.rent)
         
         return cell
     }
