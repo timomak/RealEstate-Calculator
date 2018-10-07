@@ -11,7 +11,6 @@ import UIKit
 class PropertyInputController: UIViewController {
 //    var properties = [Property]()
     var property: Property?
-    
     // User has to input these items.
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var buyingPriceTextField: UITextField!
@@ -30,6 +29,7 @@ class PropertyInputController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         calculateVariables()
+        
         if let property = property {
             // 2
             nameTextField.text = property.name
@@ -66,7 +66,7 @@ class PropertyInputController: UIViewController {
         let listPropertiesTableViewController = segue.destination as! ListPropertiesTableViewController
         if segue.identifier == "Save" {
             print("Save button tapped")
-            
+            print("property: ", Property())
             
             if let property = property {
                 property.name = nameTextField.text ?? ""
