@@ -6,6 +6,7 @@
 //  Copyright © 2018 Timofey Makhlay. All rights reserved.
 //
 
+
 import UIKit
 
 class PropertyInputController: UIViewController {
@@ -27,11 +28,13 @@ class PropertyInputController: UIViewController {
     @IBOutlet weak var incomeYearlyBeforeTaxTextField: UITextField!
     
     override func viewWillAppear(_ animated: Bool) {
+        // What the User Sees when he opens the Property Input Page.
         super.viewWillAppear(animated)
+        // Calculating everything the user doesn't have to input.
         calculateVariables()
         
         if let property = property {
-            // 2
+            // If the Property already exists, it will load its values.
             nameTextField.text = property.name
             buyingPriceTextField.text = String(property.buyingPrice)
             rentTextField.text = String(property.rent)
@@ -39,9 +42,8 @@ class PropertyInputController: UIViewController {
             propertyTaxTextField.text = String(property.propertyTax)
             yearlyFeesTextField.text = String(property.yearlyFees)
             valueGrowthTextField.text = String(property.valueGrowth)
-            
         } else {
-            // 3
+            // Else if the property is new, the values will be empty.
             nameTextField.text = ""
             buyingPriceTextField.text = ""
             rentTextField.text = ""
@@ -53,7 +55,8 @@ class PropertyInputController: UIViewController {
     }
     
     func calculateVariables() {
-        print("calculating")
+        print("Calculating function running.")
+        // Calculating Building tax.
         if let buildingTax = Double(buildingTaxTextField.text!), let propertyTax = Double(propertyTaxTextField.text!) {
             let totalTax = buildingTax + propertyTax
             totalTaxTextField.text = String(format: "%.2f", totalTax)
@@ -70,6 +73,7 @@ class PropertyInputController: UIViewController {
             
             if let property = property {
                 property.name = nameTextField.text ?? ""
+                property.buyingPrice = Double(buyingPriceTextField.text!)!
                 property.rent = Double(rentTextField.text!)!
                 property.buildingTax = Double(buildingTaxTextField.text!)!
                 property.propertyTax = Double(propertyTaxTextField.text!)!
@@ -79,6 +83,7 @@ class PropertyInputController: UIViewController {
             } else {
                 let newProperty = Property()
                 newProperty.name = nameTextField.text ?? ""
+                newProperty.buyingPrice = Double(buyingPriceTextField.text!)!
                 newProperty.rent = Double(rentTextField.text!)!
                 newProperty.buildingTax = Double(buildingTaxTextField.text!)!
                 newProperty.propertyTax = Double(propertyTaxTextField.text!)!

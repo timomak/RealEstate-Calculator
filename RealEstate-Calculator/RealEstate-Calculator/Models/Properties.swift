@@ -6,6 +6,8 @@
 //  Copyright © 2018 Timofey Makhlay. All rights reserved.
 //
 
+// TODO: User questionaire to find out how much tax they have to pay.
+
 import UIKit
 
 class Property {
