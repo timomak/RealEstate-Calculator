@@ -10,29 +10,12 @@ import UIKit
 
 
 class ListPropertiesTableViewController: UITableViewController {
-    let defaults = UserDefaults.standard
-//    var testProperty = UserDefaults.standard.array(forKey: "properties")  as? [Property] ?? [Property]()
-
-//    var appHasBeenClosed = UserDefaults.standard.bool(forKey: "closedApp")
     var properties = [Property](){
         didSet {
             tableView.reloadData()
         }
     }
-    var propertyDict:[Int:Property] = [:]
 
-    override func viewDidAppear(_ animated: Bool) {
-//        defaults.set(properties, forKey: "properties")
-//
-//        let savingProperties =  properties
-//        let encodedData = NSKeyedArchiver.archivedData(withRootObject: savingProperties)
-//        defaults.set(encodedData, forKey: "properties")
-        
-//        let propertyDictionary = ["1":properties]
-//        defaults.set(propertyDictionary, forKey: "property")
-//        print(defaults.dictionary(forKey: "property") ?? [Int:Property]())
-    }
-    
     @IBAction func unwindToListNotesViewController(segue: UIStoryboardSegue) {
         
         // for now, simply defining the method is sufficient.
@@ -41,12 +24,12 @@ class ListPropertiesTableViewController: UITableViewController {
     }
     // TODO: https://www.makeschool.com/academy/track/learn-to-program-in-swift-and-get-started-creating-your-own-apps-and-games-DEM=/learn-how-to-build-make-school-notes--v2/intro-table-view-0VM=
     
+    // 1
+//    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+//        return true
+//    }
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
-//        print("Has app been closed: ",appHasBeenClosed)
-        //    if appHasBeenClosed == true {
-        //        print()
-        //    }
         if editingStyle == UITableViewCell.EditingStyle.delete {
             
             self.properties.remove(at: indexPath.row)
@@ -93,6 +76,8 @@ class ListPropertiesTableViewController: UITableViewController {
         let row = indexPath.row
         
         let property = properties[row]
+        
+        
         // 2
         cell.propertyNameLabel.text = property.name
         cell.propertyWorthLabel.text = String(property.rent)

@@ -66,15 +66,10 @@ class PropertyInputController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         calculateVariables()
-        
-        // Check if the next page is the List of properties.
         let listPropertiesTableViewController = segue.destination as! ListPropertiesTableViewController
-        
-        // If property is being saved.
         if segue.identifier == "Save" {
             print("Save button tapped")
             
-            // If the property is new, set the value.
             if let property = property {
                 property.name = nameTextField.text ?? ""
                 property.buyingPrice = Double(buyingPriceTextField.text!)!
@@ -86,10 +81,16 @@ class PropertyInputController: UIViewController {
                 listPropertiesTableViewController.tableView.reloadData()
             }
             // Else update the already existing property.
-            else {
-                let newProperty = Property(Name: nameTextField.text ?? "", Price: Double(buyingPriceTextField.text!)!, Rent: Double(rentTextField.text!)!, BuildingTax: Double(buildingTaxTextField.text!)!, PropertyTax: Double(propertyTaxTextField.text!)!, YearlyFees: Double(yearlyFeesTextField.text!)!, ValueGrowth: Double(valueGrowthTextField.text!)!)
+           else {
+                let newProperty = Property()
+                newProperty.name = nameTextField.text ?? ""
+                newProperty.buyingPrice = Double(buyingPriceTextField.text!)!
+                newProperty.rent = Double(rentTextField.text!)!
+                newProperty.buildingTax = Double(buildingTaxTextField.text!)!
+                newProperty.propertyTax = Double(propertyTaxTextField.text!)!
+                newProperty.yearlyFees = Double(yearlyFeesTextField.text!)!
+                newProperty.valueGrowth = Double(valueGrowthTextField.text!)!
                 
-                newProperty.savePropertyData(newProperty)
                 listPropertiesTableViewController.properties.append(newProperty)
             }
         }
@@ -118,7 +119,6 @@ class PropertyInputController: UIViewController {
 
 extension UIViewController {
     func hideKeyboardWhenTappedAround() {
-        // Dismiss keyboard when you put anywhere outside the keyboard.
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
