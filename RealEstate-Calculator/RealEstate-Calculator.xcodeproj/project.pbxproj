@@ -15,6 +15,7 @@
 		F3E282A621460EB9009CE24C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3E282A421460EB9009CE24C /* Main.storyboard */; };
 		F3E282A821460EBB009CE24C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3E282A721460EBB009CE24C /* Assets.xcassets */; };
 		F3E282AB21460EBB009CE24C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3E282A921460EBB009CE24C /* LaunchScreen.storyboard */; };
+		F3EE2E5121750096008A56C6 /* Todo.rtf in Resources */ = {isa = PBXBuildFile; fileRef = F3EE2E5021750096008A56C6 /* Todo.rtf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		F3E282A721460EBB009CE24C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F3E282AA21460EBB009CE24C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F3E282AC21460EBB009CE24C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F3EE2E5021750096008A56C6 /* Todo.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Todo.rtf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,14 +79,15 @@
 		F3E2829F21460EB9009CE24C /* RealEstate-Calculator */ = {
 			isa = PBXGroup;
 			children = (
-				F303C5EB214756790019FC25 /* Models */,
 				F3E282A021460EB9009CE24C /* AppDelegate.swift */,
+				F303C5EB214756790019FC25 /* Models */,
 				F330436421473B9C008D911B /* Controllers */,
 				F34140D32147377E00A2ED29 /* ListPropertiesTableViewCell.swift */,
 				F3E282A421460EB9009CE24C /* Main.storyboard */,
 				F3E282A721460EBB009CE24C /* Assets.xcassets */,
 				F3E282A921460EBB009CE24C /* LaunchScreen.storyboard */,
 				F3E282AC21460EBB009CE24C /* Info.plist */,
+				F3EE2E5021750096008A56C6 /* Todo.rtf */,
 			);
 			path = "RealEstate-Calculator";
 			sourceTree = "<group>";
@@ -148,6 +151,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3EE2E5121750096008A56C6 /* Todo.rtf in Resources */,
 				F3E282AB21460EBB009CE24C /* LaunchScreen.storyboard in Resources */,
 				F3E282A821460EBB009CE24C /* Assets.xcassets in Resources */,
 				F3E282A621460EB9009CE24C /* Main.storyboard in Resources */,

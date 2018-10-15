@@ -66,11 +66,16 @@ class PropertyInputController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         calculateVariables()
+        
+        // Check if the next page is the List of properties.
         let listPropertiesTableViewController = segue.destination as! ListPropertiesTableViewController
+        
+        // If property is being saved.
         if segue.identifier == "Save" {
             print("Save button tapped")
             print("property: ", Property())
             
+            // If the property is new, set the value.
             if let property = property {
                 property.name = nameTextField.text ?? ""
                 property.buyingPrice = Double(buyingPriceTextField.text!)!
@@ -80,7 +85,9 @@ class PropertyInputController: UIViewController {
                 property.yearlyFees = Double(yearlyFeesTextField.text!)!
                 property.valueGrowth = Double(valueGrowthTextField.text!)!
                 listPropertiesTableViewController.tableView.reloadData()
-            } else {
+            }
+            // Else update the already existing property.
+            else {
                 let newProperty = Property()
                 newProperty.name = nameTextField.text ?? ""
                 newProperty.buyingPrice = Double(buyingPriceTextField.text!)!
@@ -89,7 +96,6 @@ class PropertyInputController: UIViewController {
                 newProperty.propertyTax = Double(propertyTaxTextField.text!)!
                 newProperty.yearlyFees = Double(yearlyFeesTextField.text!)!
                 newProperty.valueGrowth = Double(valueGrowthTextField.text!)!
-                
                 listPropertiesTableViewController.properties.append(newProperty)
             }
         }
@@ -118,6 +124,7 @@ class PropertyInputController: UIViewController {
 
 extension UIViewController {
     func hideKeyboardWhenTappedAround() {
+        // Dismiss keyboard when you put anywhere outside the keyboard.
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)

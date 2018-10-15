@@ -9,7 +9,6 @@
 import UIKit
 
 class ListPropertiesTableViewCell: UITableViewCell {
-    
     @IBOutlet weak var propertyNameLabel: UILabel!
     @IBOutlet weak var propertyWorthLabel: UILabel!
 }
