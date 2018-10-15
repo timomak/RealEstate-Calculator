@@ -73,7 +73,6 @@ class PropertyInputController: UIViewController {
         // If property is being saved.
         if segue.identifier == "Save" {
             print("Save button tapped")
-            print("property: ", Property())
             
             // If the property is new, set the value.
             if let property = property {
@@ -88,14 +87,9 @@ class PropertyInputController: UIViewController {
             }
             // Else update the already existing property.
             else {
-                let newProperty = Property()
-                newProperty.name = nameTextField.text ?? ""
-                newProperty.buyingPrice = Double(buyingPriceTextField.text!)!
-                newProperty.rent = Double(rentTextField.text!)!
-                newProperty.buildingTax = Double(buildingTaxTextField.text!)!
-                newProperty.propertyTax = Double(propertyTaxTextField.text!)!
-                newProperty.yearlyFees = Double(yearlyFeesTextField.text!)!
-                newProperty.valueGrowth = Double(valueGrowthTextField.text!)!
+                let newProperty = Property(Name: nameTextField.text ?? "", Price: Double(buyingPriceTextField.text!)!, Rent: Double(rentTextField.text!)!, BuildingTax: Double(buildingTaxTextField.text!)!, PropertyTax: Double(propertyTaxTextField.text!)!, YearlyFees: Double(yearlyFeesTextField.text!)!, ValueGrowth: Double(valueGrowthTextField.text!)!)
+                
+                newProperty.savePropertyData(newProperty)
                 listPropertiesTableViewController.properties.append(newProperty)
             }
         }
