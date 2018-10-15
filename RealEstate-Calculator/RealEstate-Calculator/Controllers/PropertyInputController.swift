@@ -10,7 +10,7 @@
 import UIKit
 
 class PropertyInputController: UIViewController {
-//    var properties = [Property]()
+    var properties:[Int] = [1,2,34,5]
     var property: Property?
     // User has to input these items.
     @IBOutlet weak var nameTextField: UITextField!
@@ -26,6 +26,34 @@ class PropertyInputController: UIViewController {
     @IBOutlet weak var afterTaxAndFeesIncomeYearlyTextField: UITextField!
     @IBOutlet weak var afterTaxAndFeesIncomeMonthlyTextField: UITextField!
     @IBOutlet weak var incomeYearlyBeforeTaxTextField: UITextField!
+    
+    
+    
+    func saveDictionary() {
+        var array = [[String : [String : Double]]]()
+        var p = ["name":["price":1.23, "rent": 2.34, "tax":3.45]]
+        var p2 = ["name":["price":1.23, "rent": 2.34, "tax":3.45]]
+
+        // Save p to NSUserdefaults
+        
+        // Retrieve p from NSUserdefaults
+        
+        // Make an array of dictionaries
+        array.append(p)
+        array.append(p2)
+        UserDefaults.standard.set(array, forKey: "properties")
+        UserDefaults.standard.synchronize()
+        
+        
+        print("User defaults : ", UserDefaults.standard.array(forKey: "properties"))
+    }
+    
+    func readDictionary() {
+        
+    }
+    
+    
+    
     
     override func viewWillAppear(_ animated: Bool) {
         // What the User Sees when he opens the Property Input Page.
@@ -91,7 +119,23 @@ class PropertyInputController: UIViewController {
                 newProperty.yearlyFees = Double(yearlyFeesTextField.text!)!
                 newProperty.valueGrowth = Double(valueGrowthTextField.text!)!
                 
+                // Possible something is wring with property?
+                // Did we add the property to the array?
+                
                 listPropertiesTableViewController.properties.append(newProperty)
+                saveDictionary()
+                // MARK: Saving properties to user defaults [not working]
+//                let savingProperties = listPropertiesTableViewController.properties
+//                let encodedData = NSKeyedArchiver.archivedData(withRootObject: savingProperties)
+//                UserDefaults.standard.set(encodedData, forKey: "properties")
+//                UserDefaults.standard.synchronize()
+//                print("User defaults : ", UserDefaults.standard.array(forKey: "properties"))
+//
+//                let decoded  = UserDefaults.standard.object(forKey: "properties") as! Data
+//                let decodedTeams = NSKeyedUnarchiver.unarchiveObject(with: decoded) as! [Property]
+//                print(decodedTeams)
+                
+                
             }
         }
     }
