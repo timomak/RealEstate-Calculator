@@ -54,15 +54,31 @@ class ListPropertiesTableViewController: UITableViewController {
             }
         }
     }
-    override func viewDidAppear(_ animated: Bool) {
-
+    
+    func deleteUserDefault(property: [String: [String: Double]]) {
+        var dictionary = UserDefaults.standard.array(forKey: "properties") as! [[String : [String : Double]]]
+        var count = 0
+        for array in dictionary {
+            for (name, dict) in array {
+                for (propertyName, propertyValues) in property {
+                    if name == propertyName && dict == propertyValues {
+                        dictionary.remove(at: count)
+                        UserDefaults.standard.set(dictionary,forKey: "properties")
+                        UserDefaults.standard.synchronize()
+                    }
+                }
+            }
+            count += 1
+        }
     }
+    
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
         if editingStyle == UITableViewCell.EditingStyle.delete {
             
+            // Deletes User Default Property
+            deleteUserDefault(property: self.properties[indexPath.row].getDictionary())
             self.properties.remove(at: indexPath.row)
-            
             self.tableView.reloadData()
         }
         
