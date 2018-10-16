@@ -24,22 +24,4 @@ class Property {
     func getDictionary() -> [String: [String: Double]] {
         return [name: ["price": buyingPrice, "rent": rent, "buildingTax": buildingTax, "propertyTax": propertyTax, "fees":yearlyFees, "growth": valueGrowth]]
     }
-    
-    func updateProperty(oldProperty: [String: [String: Double]], newProperty: [String: [String: Double]]) {
-        let dictionary = UserDefaults.standard.array(forKey: "properties") as! [[String : [String : Double]]]
-        for array in dictionary {
-            for (var name, var dict) in array {
-                for (oldPropertyName, oldPropertyValues) in oldProperty {
-                    if name == oldPropertyName && dict == oldPropertyValues {
-                        for (newPropertyName, newPropertyValues) in newProperty {
-                            name = newPropertyName
-                            dict = newPropertyValues
-                            UserDefaults.standard.set(dictionary,forKey: "properties")
-                            UserDefaults.standard.synchronize()
-                        }
-                    }
-                }
-            }
-        }
-    }
 }

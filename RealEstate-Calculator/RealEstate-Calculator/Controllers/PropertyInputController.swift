@@ -131,11 +131,13 @@ class PropertyInputController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         calculateVariables()
         let listPropertiesTableViewController = segue.destination as! ListPropertiesTableViewController
+        
         print("It registers this far")
         if segue.identifier == "Save" {
             print("Save button tapped")
             // If the property already exists, input the existing values.
             if let editedProperty = property {
+                listPropertiesTableViewController.deleteUserDefault(property: editedProperty.getDictionary())
                 editedProperty.name = nameTextField.text ?? ""
                 editedProperty.buyingPrice = Double(buyingPriceTextField.text!)!
                 editedProperty.rent = Double(rentTextField.text!)!
@@ -144,7 +146,7 @@ class PropertyInputController: UIViewController {
                 editedProperty.yearlyFees = Double(yearlyFeesTextField.text!)!
                 editedProperty.valueGrowth = Double(valueGrowthTextField.text!)!
                 
-//                updatePropertyDefaults(oldProperty: tempProperty, newProperty: editedProperty.getDictionary())
+                saveDictionary(array: editedProperty.getDictionary())
                 listPropertiesTableViewController.tableView.reloadData()
             }
             // Else update the already existing property.
