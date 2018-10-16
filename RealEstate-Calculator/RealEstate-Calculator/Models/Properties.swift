@@ -7,6 +7,7 @@
 //
 
 // TODO: User questionaire to find out how much tax they have to pay.
+// TODO: Delete from database
 
 import UIKit
 
@@ -19,8 +20,8 @@ class Property {
     var yearlyFees: Double = 0.0
     var valueGrowth: Double = 0.0
     
-    func getDictionary() -> [String: [String: Double] ] {
-        
-        return [name: ["price": buyingPrice, "rent": rent, "tax": buildingTax]]
+    // Function to return property in JSON format to be able to store it with UserDefaults
+    func getDictionary() -> [String: [String: Double]] {
+        return [name: ["price": buyingPrice, "rent": rent, "buildingTax": buildingTax, "propertyTax": propertyTax, "fees":yearlyFees, "growth": valueGrowth]]
     }
 }

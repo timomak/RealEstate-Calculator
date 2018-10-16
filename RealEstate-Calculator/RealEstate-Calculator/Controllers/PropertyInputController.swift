@@ -12,6 +12,7 @@ import UIKit
 class PropertyInputController: UIViewController {
     var properties:[Int] = [1,2,34,5]
     var property: Property?
+
     // User has to input these items.
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var buyingPriceTextField: UITextField!
@@ -29,31 +30,26 @@ class PropertyInputController: UIViewController {
     
     
     
-    func saveDictionary() {
-        var array = [[String : [String : Double]]]()
-        var p = ["name":["price":1.23, "rent": 2.34, "tax":3.45]]
-        var p2 = ["name":["price":1.23, "rent": 2.34, "tax":3.45]]
-
-        // Save p to NSUserdefaults
-        
-        // Retrieve p from NSUserdefaults
-        
-        // Make an array of dictionaries
-        array.append(p)
-        array.append(p2)
-        UserDefaults.standard.set(array, forKey: "properties")
-        UserDefaults.standard.synchronize()
-        
-        
-        print("User defaults : ", UserDefaults.standard.array(forKey: "properties"))
+    func saveDictionary(array:[String : [String : Double]]) {
+        // If the app has no properties it will create a new array.
+        if UserDefaults.standard.bool(forKey: "hasProperty") != true {
+            print("Creating new array!")
+            var defaultsarray = [[String : [String : Double]]]()
+            defaultsarray.append(array)
+            UserDefaults.standard.set(defaultsarray, forKey: "properties")
+            UserDefaults.standard.synchronize()
+            print("User defaults : ", UserDefaults.standard.array(forKey: "properties") as Any)
+        }
+        // If the app already has properties, it will add the new property to the array.
+        else {
+            print("Adding to array!")
+            var defaultsarray = UserDefaults.standard.array(forKey: "properties")!
+            defaultsarray.append(array)
+            UserDefaults.standard.set(defaultsarray, forKey: "properties")
+            UserDefaults.standard.synchronize()
+            print("User defaults : ", UserDefaults.standard.array(forKey: "properties") as Any)
+        }
     }
-    
-    func readDictionary() {
-        
-    }
-    
-    
-    
     
     override func viewWillAppear(_ animated: Bool) {
         // What the User Sees when he opens the Property Input Page.
@@ -95,9 +91,10 @@ class PropertyInputController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         calculateVariables()
         let listPropertiesTableViewController = segue.destination as! ListPropertiesTableViewController
+        print("It registers this far")
         if segue.identifier == "Save" {
             print("Save button tapped")
-            
+            // If the property already exists, input the existing values.
             if let property = property {
                 property.name = nameTextField.text ?? ""
                 property.buyingPrice = Double(buyingPriceTextField.text!)!
@@ -118,24 +115,17 @@ class PropertyInputController: UIViewController {
                 newProperty.propertyTax = Double(propertyTaxTextField.text!)!
                 newProperty.yearlyFees = Double(yearlyFeesTextField.text!)!
                 newProperty.valueGrowth = Double(valueGrowthTextField.text!)!
+
+                // Get the values of the new property from class method.
+                // Add the new property to UserDefaults
+                saveDictionary(array:newProperty.getDictionary())
                 
-                // Possible something is wring with property?
-                // Did we add the property to the array?
-                
+                // Add property to properties to be displayed in the first view.
                 listPropertiesTableViewController.properties.append(newProperty)
-                saveDictionary()
-                // MARK: Saving properties to user defaults [not working]
-//                let savingProperties = listPropertiesTableViewController.properties
-//                let encodedData = NSKeyedArchiver.archivedData(withRootObject: savingProperties)
-//                UserDefaults.standard.set(encodedData, forKey: "properties")
-//                UserDefaults.standard.synchronize()
-//                print("User defaults : ", UserDefaults.standard.array(forKey: "properties"))
-//
-//                let decoded  = UserDefaults.standard.object(forKey: "properties") as! Data
-//                let decodedTeams = NSKeyedUnarchiver.unarchiveObject(with: decoded) as! [Property]
-//                print(decodedTeams)
                 
-                
+                // Notify that the app has properties.
+                UserDefaults.standard.set(true, forKey: "hasProperty")
+                UserDefaults.standard.synchronize()
             }
         }
     }
@@ -162,6 +152,7 @@ class PropertyInputController: UIViewController {
 }
 
 extension UIViewController {
+    // Hide the keyboard when tapped away from it.
     func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
         tap.cancelsTouchesInView = false

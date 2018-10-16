@@ -15,7 +15,8 @@ class ListPropertiesTableViewController: UITableViewController {
             tableView.reloadData()
         }
     }
-
+    
+    // Not sure what this does but without it code won't work.
     @IBAction func unwindToListNotesViewController(segue: UIStoryboardSegue) {
         
         // for now, simply defining the method is sufficient.
@@ -24,10 +25,38 @@ class ListPropertiesTableViewController: UITableViewController {
     }
     // TODO: https://www.makeschool.com/academy/track/learn-to-program-in-swift-and-get-started-creating-your-own-apps-and-games-DEM=/learn-how-to-build-make-school-notes--v2/intro-table-view-0VM=
     
-    // 1
-//    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-//        return true
-//    }
+    func unwrapDictionary(dictionary: [[String: [String: Double]]]) {
+        for array in dictionary {
+            for (name, dict) in array {
+                let newProperty = Property()
+                newProperty.name = name
+                for (nameOfValue, value) in dict {
+                    if nameOfValue == "price" {
+                        newProperty.buyingPrice = value
+                    } else if nameOfValue == "rent" {
+                        newProperty.rent = value
+                    }
+                    else if nameOfValue == "buildingTax" {
+                        newProperty.buildingTax = value
+                    }
+                    else if nameOfValue == "propertyTax" {
+                        newProperty.propertyTax = value
+                    }
+                    else if nameOfValue == "fees" {
+                        newProperty.yearlyFees = value
+                    }
+                    else if nameOfValue == "growth" {
+                        newProperty.valueGrowth = value
+                    }
+                    print("Name: \(name) [\(nameOfValue): \(value)]")
+                }
+                properties.append(newProperty)
+            }
+        }
+    }
+    override func viewDidAppear(_ animated: Bool) {
+
+    }
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
         if editingStyle == UITableViewCell.EditingStyle.delete {
@@ -39,9 +68,6 @@ class ListPropertiesTableViewController: UITableViewController {
         
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
-        
-        
         if let identifier = segue.identifier {
             if identifier == "displayProperty" {
                 print("Table view cell tapped")
@@ -87,5 +113,9 @@ class ListPropertiesTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // If the app has properties, this will add them. Otherwise, the page should remain empty
+        if UserDefaults.standard.bool(forKey: "hasProperty") == true {
+            unwrapDictionary(dictionary: UserDefaults.standard.array(forKey: "properties") as! [[String : [String : Double]]])
+        }
     }
 }
