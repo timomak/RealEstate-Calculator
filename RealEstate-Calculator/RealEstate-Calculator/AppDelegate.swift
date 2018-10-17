@@ -22,38 +22,44 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         // Configure Firebase
         FirebaseApp.configure()
         // Google account logIn
-        GIDSignIn.sharedInstance().clientID = "1078337616632-a8nu259s1lsj36fif89o57drplkkvokh.apps.googleusercontent.com"
+        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
         
 
         return true
     }
-    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        return GIDSignIn.sharedInstance().handle(url as URL?,
-                                                 sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
-                                                 annotation: options[UIApplication.OpenURLOptionsKey.annotation])
+    @available(iOS 11.4, *)
+    func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any])
+        -> Bool {
+            return GIDSignIn.sharedInstance().handle(url,
+                                                     sourceApplication:options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
+                                                     annotation: [:])
     }
     
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!,
-              withError error: Error!) {
-        print("SignIn function")
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
+        // ...
         if let error = error {
-            print("\(error.localizedDescription)")
-        } else {
-            print("Logged in with no errors")
-            // Perform any operations on signed in user here.
-            let userId = user.userID                  // For client-side use only!
-            let idToken = user.authentication.idToken // Safe to send to the server
-            let fullName = user.profile.name
-            let givenName = user.profile.givenName
-            let familyName = user.profile.familyName
-            let email = user.profile.email
             // ...
+            return
+        }
+        
+        guard let authentication = user.authentication else { return }
+        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
+                                                       accessToken: authentication.accessToken)
+        // ...
+        if Auth.auth().currentUser != nil {
+            // User is signed in.
+            // ...
+            print("User IS SIGNED IN")
+            var user = Auth.auth().currentUser
+        } else {
+            // No user is signed in.
+            // ...
+            print("No USER FOUND")
         }
     }
     
-    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!,
-              withError error: Error!) {
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
         // Perform any operations when the user disconnects from app here.
         // ...
     }

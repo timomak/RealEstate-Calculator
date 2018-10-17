@@ -13,28 +13,6 @@ import GoogleSignIn
 class LoginController: UIViewController, GIDSignInUIDelegate {
     @IBOutlet weak var signInButtonByGoogle: GIDSignInButton!
 
-//    @IBAction func signOutButton(_ sender: Any) {
-//        print("Button being pressed")
-//        let firebaseAuth = Auth.auth()
-//        print("This: ",firebaseAuth)
-//        do {
-//            print("Signing Out")
-//            try firebaseAuth.signOut()
-//        } catch let signOutError as NSError {
-//            print ("Error signing out: %@", signOutError)
-//        }
-//    }
-    
-//    @objc func nextVC() {
-//        guard let vc = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "register1") as? RegisterViewController1 else {
-//            print("Could not instantiate view controller with identifier of type SecondViewController")
-//            return
-//        }
-//        self.navigationController?.pushViewController(vc, animated:true)
-//    }
-    var handle: AuthStateDidChangeListenerHandle?
-    //initializes the log in button
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         GIDSignIn.sharedInstance().uiDelegate = self
@@ -44,19 +22,38 @@ class LoginController: UIViewController, GIDSignInUIDelegate {
         // ...
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        // [START auth_listener]
-        handle = Auth.auth().addStateDidChangeListener { (auth, user) in
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
+        // ...
+        if let error = error {
+            // ...
+            return
+        }
+        
+        guard let authentication = user.authentication else { return }
+        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
+                                                       accessToken: authentication.accessToken)
+        Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
+            if let error = error {
+                // ...
+                return
+            }
+            
+ 
+            // User is signed in
+            // ...
+            
             
         }
-        // [END auth_listener]
+        if Auth.auth().currentUser != nil {
+            // User is signed in.
+            // ...
+            print("User IS SIGNED IN")
+        } else {
+            // No user is signed in.
+            // ...
+            print("No USER FOUND")
+        }
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        // [START remove_auth_listener]
-        Auth.auth().removeStateDidChangeListener(handle!)
-        // [END remove_auth_listener]
-    }
 }

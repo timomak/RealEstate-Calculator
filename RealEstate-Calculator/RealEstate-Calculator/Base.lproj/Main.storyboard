@@ -372,7 +372,7 @@
                                     <color key="titleColor" red="0.14901961389999999" green="0.14901961389999999" blue="0.14901961389999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="64m-eq-8fS" kind="presentation" modalTransitionStyle="coverVertical" id="G0j-k8-3rP"/>
+                                    <segue destination="64m-eq-8fS" kind="presentation" identifier="toAllProperties" modalTransitionStyle="coverVertical" id="G0j-k8-3rP"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ulb-Pi-Vvu" customClass="GIDSignInButton">

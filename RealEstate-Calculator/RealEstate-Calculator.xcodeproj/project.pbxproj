@@ -130,8 +130,8 @@
 				F3E2829921460EB9009CE24C /* Sources */,
 				F3E2829A21460EB9009CE24C /* Frameworks */,
 				F3E2829B21460EB9009CE24C /* Resources */,
-				76DC868C4F746B051ADC9735 /* [CP] Embed Pods Frameworks */,
-				BBD6E83757D36312474A7148 /* [CP] Copy Pods Resources */,
+				4054363D02A4AB206A3A4064 /* [CP] Embed Pods Frameworks */,
+				99730A166B1601CAB8361BE6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -191,7 +191,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		76DC868C4F746B051ADC9735 /* [CP] Embed Pods Frameworks */ = {
+		4054363D02A4AB206A3A4064 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -223,7 +223,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RealEstate-Calculator/Pods-RealEstate-Calculator-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		BBD6E83757D36312474A7148 /* [CP] Copy Pods Resources */ = {
+		99730A166B1601CAB8361BE6 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
