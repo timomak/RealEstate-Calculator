@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B19CB75C2F795B576FE4F74B /* Pods_RealEstate_Calculator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A392D2851BB424B8CD6EEC0F /* Pods_RealEstate_Calculator.framework */; };
 		F303C5ED214756930019FC25 /* Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F303C5EC214756930019FC25 /* Properties.swift */; };
 		F32C62482146293E0018518C /* ListPropertiesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32C62472146293E0018518C /* ListPropertiesTableViewController.swift */; };
 		F32D005F2177B92F00E81DCA /* LogInController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32D005E2177B92F00E81DCA /* LogInController.swift */; };
+		F32D00612177C09A00E81DCA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F32D00602177C09A00E81DCA /* GoogleService-Info.plist */; };
 		F34140D42147377E00A2ED29 /* ListPropertiesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34140D32147377E00A2ED29 /* ListPropertiesTableViewCell.swift */; };
 		F3E282A121460EB9009CE24C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E282A021460EB9009CE24C /* AppDelegate.swift */; };
 		F3E282A321460EB9009CE24C /* PropertyInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E282A221460EB9009CE24C /* PropertyInputController.swift */; };
@@ -19,9 +21,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A392D2851BB424B8CD6EEC0F /* Pods_RealEstate_Calculator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RealEstate_Calculator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E87A04D0D1250C9396BFB0DA /* Pods-RealEstate-Calculator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealEstate-Calculator.release.xcconfig"; path = "Pods/Target Support Files/Pods-RealEstate-Calculator/Pods-RealEstate-Calculator.release.xcconfig"; sourceTree = "<group>"; };
+		E8BE7D0961010A0CAF23F222 /* Pods-RealEstate-Calculator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealEstate-Calculator.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RealEstate-Calculator/Pods-RealEstate-Calculator.debug.xcconfig"; sourceTree = "<group>"; };
 		F303C5EC214756930019FC25 /* Properties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Properties.swift; sourceTree = "<group>"; };
 		F32C62472146293E0018518C /* ListPropertiesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPropertiesTableViewController.swift; sourceTree = "<group>"; };
 		F32D005E2177B92F00E81DCA /* LogInController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInController.swift; sourceTree = "<group>"; };
+		F32D00602177C09A00E81DCA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F34140D32147377E00A2ED29 /* ListPropertiesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPropertiesTableViewCell.swift; sourceTree = "<group>"; };
 		F3E2829D21460EB9009CE24C /* RealEstate-Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RealEstate-Calculator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3E282A021460EB9009CE24C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -37,12 +43,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B19CB75C2F795B576FE4F74B /* Pods_RealEstate_Calculator.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3332C29FD67D53655EA60D4E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E8BE7D0961010A0CAF23F222 /* Pods-RealEstate-Calculator.debug.xcconfig */,
+				E87A04D0D1250C9396BFB0DA /* Pods-RealEstate-Calculator.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		7002C60F0B6B77DC02D9430A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A392D2851BB424B8CD6EEC0F /* Pods_RealEstate_Calculator.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F303C5EB214756790019FC25 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -66,6 +90,8 @@
 			children = (
 				F3E2829F21460EB9009CE24C /* RealEstate-Calculator */,
 				F3E2829E21460EB9009CE24C /* Products */,
+				3332C29FD67D53655EA60D4E /* Pods */,
+				7002C60F0B6B77DC02D9430A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -87,6 +113,7 @@
 				F3E282A421460EB9009CE24C /* Main.storyboard */,
 				F3E282A721460EBB009CE24C /* Assets.xcassets */,
 				F3E282A921460EBB009CE24C /* LaunchScreen.storyboard */,
+				F32D00602177C09A00E81DCA /* GoogleService-Info.plist */,
 				F3E282AC21460EBB009CE24C /* Info.plist */,
 			);
 			path = "RealEstate-Calculator";
@@ -99,9 +126,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F3E282AF21460EBB009CE24C /* Build configuration list for PBXNativeTarget "RealEstate-Calculator" */;
 			buildPhases = (
+				F482ECCAD16C01E33A81C236 /* [CP] Check Pods Manifest.lock */,
 				F3E2829921460EB9009CE24C /* Sources */,
 				F3E2829A21460EB9009CE24C /* Frameworks */,
 				F3E2829B21460EB9009CE24C /* Resources */,
+				76DC868C4F746B051ADC9735 /* [CP] Embed Pods Frameworks */,
+				BBD6E83757D36312474A7148 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -152,12 +182,92 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3E282AB21460EBB009CE24C /* LaunchScreen.storyboard in Resources */,
+				F32D00612177C09A00E81DCA /* GoogleService-Info.plist in Resources */,
 				F3E282A821460EBB009CE24C /* Assets.xcassets in Resources */,
 				F3E282A621460EB9009CE24C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		76DC868C4F746B051ADC9735 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-RealEstate-Calculator/Pods-RealEstate-Calculator-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RealEstate-Calculator/Pods-RealEstate-Calculator-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BBD6E83757D36312474A7148 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-RealEstate-Calculator/Pods-RealEstate-Calculator-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RealEstate-Calculator/Pods-RealEstate-Calculator-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F482ECCAD16C01E33A81C236 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RealEstate-Calculator-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F3E2829921460EB9009CE24C /* Sources */ = {
@@ -311,6 +421,7 @@
 		};
 		F3E282B021460EBB009CE24C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E8BE7D0961010A0CAF23F222 /* Pods-RealEstate-Calculator.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -330,6 +441,7 @@
 		};
 		F3E282B121460EBB009CE24C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E87A04D0D1250C9396BFB0DA /* Pods-RealEstate-Calculator.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
