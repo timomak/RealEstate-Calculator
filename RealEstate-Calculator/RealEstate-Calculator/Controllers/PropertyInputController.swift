@@ -152,13 +152,13 @@ class PropertyInputController: UIViewController {
             // Else update the already existing property.
            else {
                 let newProperty = Property()
-                newProperty.name = nameTextField.text ?? ""
-                newProperty.buyingPrice = Double(buyingPriceTextField.text!)!
-                newProperty.rent = Double(rentTextField.text!)!
-                newProperty.buildingTax = Double(buildingTaxTextField.text!)!
-                newProperty.propertyTax = Double(propertyTaxTextField.text!)!
-                newProperty.yearlyFees = Double(yearlyFeesTextField.text!)!
-                newProperty.valueGrowth = Double(valueGrowthTextField.text!)!
+                newProperty.name = nameTextField.text ?? "no name"
+                newProperty.buyingPrice = Double(buyingPriceTextField.text ?? "0") ?? 0.00
+                newProperty.rent = Double(rentTextField.text ?? "0") ?? 0.00
+                newProperty.buildingTax = Double(buildingTaxTextField.text ?? "0") ?? 0.00
+                newProperty.propertyTax = Double(propertyTaxTextField.text ?? "0") ?? 0.00
+                newProperty.yearlyFees = Double(yearlyFeesTextField.text ?? "0") ?? 0.00
+                newProperty.valueGrowth = Double(valueGrowthTextField.text ?? "0") ?? 0.00
 
                 // Get the values of the new property from class method.
                 // Add the new property to UserDefaults
