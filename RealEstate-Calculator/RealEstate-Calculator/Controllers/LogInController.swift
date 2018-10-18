@@ -14,7 +14,7 @@ import GoogleSignIn
 
 class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
     // Connect to Firebase Database
-    var ref: DatabaseReference!
+//    var ref: DatabaseReference!
     @IBOutlet weak var signInButtonByGoogle: GIDSignInButton!
     var uid: String?
     var username: String?
@@ -55,14 +55,14 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate 
                 print("email: ", email!)
                 
                 // Connect to Database once logged in before segue
-                ref = Database.database().reference()
+//                ref = Database.database().reference()
                 // self.ref.child("users").child(user.uid).setValue(["username": username])
                 
                 // Read saved Userdefaults and save/write into Firebase Database.
 //                savePropertyArrayToFirebaseDatabase(userId: uid!, username: username!, dictionary: UserDefaults.standard.array(forKey: "properties") as! [[String : [String : Double]]])
                 
                 // Segue to the next view if User is signed in.
-//                self.performSegue(withIdentifier: "toAllProperties", sender: self)
+                self.performSegue(withIdentifier: "toAllProperties", sender: self)
             }
         } else {
             // No user is signed in.
@@ -76,53 +76,53 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate 
         print("This is now working. SIGNOUT")
     }
     
-    // Read saved Userdefaults and save/write into Firebase Database.
-    func savePropertyArrayToFirebaseDatabase(reference: DatabaseReference, userId: String, username: String, dictionary: [[String: [String: Double]]]) {
-        for array in dictionary {
-            for (name, dict) in array {
-                let newProperty = Property()
-                newProperty.name = name
-                reference.child("users/\(userId)/\(username)/property").setValue(name)
-                for (nameOfValue, value) in dict {
-                    if nameOfValue == "price" {
-                        newProperty.buyingPrice = value
-                        reference.child("users/\(userId)/\(username)/\(name)/nameOfvalue").setValue(nameOfValue)
-                        reference.child("users/\(userId)/\(username)/\(name)/\(nameOfValue)/value").setValue(value)
-                    } else if nameOfValue == "rent" {
-                        newProperty.rent = value
-                        reference.child("users/\(userId)/\(username)/\(name)/nameOfvalue").setValue(nameOfValue)
-                        reference.child("users/\(userId)/\(username)/\(name)/\(nameOfValue)/value").setValue(value)
-                    }
-                    else if nameOfValue == "buildingTax" {
-                        newProperty.buildingTax = value
-                        reference.child("users/\(userId)/\(username)/\(name)/nameOfvalue").setValue(nameOfValue)
-                        reference.child("users/\(userId)/\(username)/\(name)/\(nameOfValue)/value").setValue(value)
-                    }
-                    else if nameOfValue == "propertyTax" {
-                        newProperty.propertyTax = value
-                        reference.child("users/\(userId)/\(username)/\(name)/nameOfvalue").setValue(nameOfValue)
-                        reference.child("users/\(userId)/\(username)/\(name)/\(nameOfValue)/value").setValue(value)
-                    }
-                    else if nameOfValue == "fees" {
-                        newProperty.yearlyFees = value
-                        reference.child("users/\(userId)/\(username)/\(name)/nameOfvalue").setValue(nameOfValue)
-                        reference.child("users/\(userId)/\(username)/\(name)/\(nameOfValue)/value").setValue(value)
-                    }
-                    else if nameOfValue == "growth" {
-                        newProperty.valueGrowth = value
-                        reference.child("users/\(userId)/\(username)/\(name)/nameOfvalue").setValue(nameOfValue)
-                        reference.child("users/\(userId)/\(username)/\(name)/\(nameOfValue)/value").setValue(value)
-                    }
-//                    print("Name: \(name) [\(nameOfValue): \(value)]")
-                }
-                //                properties.append(newProperty)
-            }
-        }
-    }
-    
-    func appClosingSaveDataToFireBase() {
-        print("I AM SAVING THE DATA TO DATABASE")
-        savePropertyArrayToFirebaseDatabase(reference: ref!, userId: uid!, username: username!, dictionary: UserDefaults.standard.array(forKey: "properties") as! [[String : [String : Double]]])
-    }
+//    // Read saved Userdefaults and save/write into Firebase Database.
+//    func savePropertyArrayToFirebaseDatabase(reference: DatabaseReference, userId: String, username: String, dictionary: [[String: [String: Double]]]) {
+//        for array in dictionary {
+//            for (name, dict) in array {
+//                let newProperty = Property()
+//                newProperty.name = name
+//                reference.child("users/\(userId)/\(username)/property").setValue(name)
+//                for (nameOfValue, value) in dict {
+//                    if nameOfValue == "price" {
+//                        newProperty.buyingPrice = value
+//                        reference.child("users/\(userId)/\(username)/\(name)/nameOfvalue").setValue(nameOfValue)
+//                        reference.child("users/\(userId)/\(username)/\(name)/\(nameOfValue)/value").setValue(value)
+//                    } else if nameOfValue == "rent" {
+//                        newProperty.rent = value
+//                        reference.child("users/\(userId)/\(username)/\(name)/nameOfvalue").setValue(nameOfValue)
+//                        reference.child("users/\(userId)/\(username)/\(name)/\(nameOfValue)/value").setValue(value)
+//                    }
+//                    else if nameOfValue == "buildingTax" {
+//                        newProperty.buildingTax = value
+//                        reference.child("users/\(userId)/\(username)/\(name)/nameOfvalue").setValue(nameOfValue)
+//                        reference.child("users/\(userId)/\(username)/\(name)/\(nameOfValue)/value").setValue(value)
+//                    }
+//                    else if nameOfValue == "propertyTax" {
+//                        newProperty.propertyTax = value
+//                        reference.child("users/\(userId)/\(username)/\(name)/nameOfvalue").setValue(nameOfValue)
+//                        reference.child("users/\(userId)/\(username)/\(name)/\(nameOfValue)/value").setValue(value)
+//                    }
+//                    else if nameOfValue == "fees" {
+//                        newProperty.yearlyFees = value
+//                        reference.child("users/\(userId)/\(username)/\(name)/nameOfvalue").setValue(nameOfValue)
+//                        reference.child("users/\(userId)/\(username)/\(name)/\(nameOfValue)/value").setValue(value)
+//                    }
+//                    else if nameOfValue == "growth" {
+//                        newProperty.valueGrowth = value
+//                        reference.child("users/\(userId)/\(username)/\(name)/nameOfvalue").setValue(nameOfValue)
+//                        reference.child("users/\(userId)/\(username)/\(name)/\(nameOfValue)/value").setValue(value)
+//                    }
+////                    print("Name: \(name) [\(nameOfValue): \(value)]")
+//                }
+//                //                properties.append(newProperty)
+//            }
+//        }
+//    }
+//
+//    func appClosingSaveDataToFireBase() {
+//        print("I AM SAVING THE DATA TO DATABASE")
+//        savePropertyArrayToFirebaseDatabase(reference: ref!, userId: uid!, username: username!, dictionary: UserDefaults.standard.array(forKey: "properties") as! [[String : [String : Double]]])
+//    }
 }
 
