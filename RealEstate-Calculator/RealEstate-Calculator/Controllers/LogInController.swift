@@ -10,25 +10,22 @@ import UIKit
 import Firebase
 import GoogleSignIn
 
+// TODO: Handle UserDefualts sync from Firebase to Userdefaults after Login
+
 class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate {
+    // Connect to Firebase Database
+    var ref: DatabaseReference!
     @IBOutlet weak var signInButtonByGoogle: GIDSignInButton!
-    @IBAction func signInButtonPressed(_ sender: Any) {
-        GIDSignIn.sharedInstance().signIn()
-        print("Pressed Sign in")
-        self.performSegue(withIdentifier: "toAllProperties", sender: self)
-//        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-//        let user = appDelegate.
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Connect Google Sign in from delegate and Sign in user.
         GIDSignIn.sharedInstance().uiDelegate = self
         GIDSignIn.sharedInstance().delegate = self
         GIDSignIn.sharedInstance().signInSilently()
         
-
-        // TODO(developer) Configure the sign-in button look/feel
-        // ...
+        // TODO: Configure the sign-in button look/feel
     }
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
@@ -41,37 +38,32 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate 
         guard let authentication = user.authentication else { return }
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
                                                        accessToken: authentication.accessToken)
-        // ...
         if Auth.auth().currentUser != nil {
-            // Access the storyboard and fetch an instance of the view controller
-//            let storyboard = UIStoryboard(name: "Main", bundle: nil);
-//            let viewController: ListPropertiesTableViewController = storyboard.instantiateViewController(withIdentifier: "toAllProperties") as! ListPropertiesTableViewController;
-//
             // User is signed in.
-            // ...
-            print("User IS SIGNED IN")
             let user = Auth.auth().currentUser
+            
             if let user = user {
-                print("User == User")
-                // The user's ID, unique to the Firebase project.
-                // Do NOT use this value to authenticate with your backend server,
-                // if you have one. Use getTokenWithCompletion:completion: instead.
+                print("User found and Authenticated.")
+                // Save user info in session
                 let uid = user.uid
                 let email = user.email
                 let photoURL = user.photoURL
-                // ...
+                
+                // Connect to Database once logged in before segue
+                ref = Database.database().reference()
+                
+                // Segue to the next view if User is signed in.
                 self.performSegue(withIdentifier: "toAllProperties", sender: self)
             }
         } else {
             // No user is signed in.
-            // ...
             print("No USER FOUND")
         }
     }
     
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
         // Perform any operations when the user disconnects from app here.
-        // ...
+        // TODO: Sync from Userdefaults to Firebase.
     }
 }
 

@@ -10,9 +10,8 @@
 import UIKit
 
 class PropertyInputController: UIViewController {
-    var properties:[Int] = [1,2,34,5]
+//    var properties:[Int] = [1,2,34,5]
     var property: Property?
-    var tempProperty: [String : [String : Double]] = [:]
 
     // User has to input these items.
     @IBOutlet weak var nameTextField: UITextField!
@@ -54,6 +53,7 @@ class PropertyInputController: UIViewController {
         }
     }
     
+    // Updating saved with UserDefaults property function
     func updatePropertyDefaults(oldProperty: [String: [String: Double]], newProperty: [String: [String: Double]]) {
         print("The update is running")
         let dictionary = UserDefaults.standard.array(forKey: "properties") as! [[String : [String : Double]]]
@@ -132,7 +132,6 @@ class PropertyInputController: UIViewController {
         calculateVariables()
         let listPropertiesTableViewController = segue.destination as! ListPropertiesTableViewController
         
-        print("It registers this far")
         if segue.identifier == "Save" {
             print("Save button tapped")
             // If the property already exists, input the existing values.

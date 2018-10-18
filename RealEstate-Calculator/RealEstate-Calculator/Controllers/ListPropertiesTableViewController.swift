@@ -25,6 +25,7 @@ class ListPropertiesTableViewController: UITableViewController {
     }
     // TODO: https://www.makeschool.com/academy/track/learn-to-program-in-swift-and-get-started-creating-your-own-apps-and-games-DEM=/learn-how-to-build-make-school-notes--v2/intro-table-view-0VM=
     
+    // Read saved Userdefaults values already saved and make them into a Property Class.
     func unwrapDictionary(dictionary: [[String: [String: Double]]]) {
         for array in dictionary {
             for (name, dict) in array {
@@ -55,6 +56,7 @@ class ListPropertiesTableViewController: UITableViewController {
         }
     }
     
+    // Delete UserDefaults saved properties by comparing their names and rest of the values.
     func deleteUserDefault(property: [String: [String: Double]]) {
         var dictionary = UserDefaults.standard.array(forKey: "properties") as! [[String : [String : Double]]]
         var count = 0
@@ -122,7 +124,7 @@ class ListPropertiesTableViewController: UITableViewController {
         
         // 2
         cell.propertyNameLabel.text = property.name
-        cell.propertyWorthLabel.text = String(property.rent)
+        cell.propertyWorthLabel.text = String(property.buyingPrice)
         
         return cell
     }
