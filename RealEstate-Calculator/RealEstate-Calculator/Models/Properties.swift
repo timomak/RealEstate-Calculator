@@ -7,7 +7,7 @@
 //
 
 // TODO: User questionaire to find out how much tax they have to pay.
-// TODO: Building tax to HOA dues, add address, squared feet and calculate price x sf
+// TODO: Delete from database
 
 import UIKit
 
