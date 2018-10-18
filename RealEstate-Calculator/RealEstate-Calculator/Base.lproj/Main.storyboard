@@ -380,6 +380,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
+                                    <action selector="signInButtonPressed:" destination="f1L-ag-N7p" eventType="valueChanged" id="7r8-ye-p2M"/>
                                     <action selector="signInGooglePressed:" destination="f1L-ag-N7p" eventType="valueChanged" id="KyN-Rv-9zo"/>
                                 </connections>
                             </view>
