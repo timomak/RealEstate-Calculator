@@ -8,6 +8,9 @@
 import Foundation
 import UIKit
 
+// To save and write to database.
+import Firebase
+
 
 class ListPropertiesTableViewController: UITableViewController {
     var properties = [Property](){
@@ -15,6 +18,9 @@ class ListPropertiesTableViewController: UITableViewController {
             tableView.reloadData()
         }
     }
+    
+    // Connect to Firebase Database
+    var ref: DatabaseReference!
     
     // Not sure what this does but without it code won't work.
     @IBAction func unwindToListNotesViewController(segue: UIStoryboardSegue) {

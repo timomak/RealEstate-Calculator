@@ -25,3 +25,4 @@ class Property {
         return [name: ["price": buyingPrice, "rent": rent, "buildingTax": buildingTax, "propertyTax": propertyTax, "fees":yearlyFees, "growth": valueGrowth]]
     }
 }
+
