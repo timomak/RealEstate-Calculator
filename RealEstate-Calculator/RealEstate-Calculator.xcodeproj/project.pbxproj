@@ -17,7 +17,7 @@
 		F3E282A321460EB9009CE24C /* PropertyInputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3E282A221460EB9009CE24C /* PropertyInputController.swift */; };
 		F3E282A821460EBB009CE24C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3E282A721460EBB009CE24C /* Assets.xcassets */; };
 		F3E282AB21460EBB009CE24C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3E282A921460EBB009CE24C /* LaunchScreen.storyboard */; };
-		F3F55DB521792DD8006BC76F /* Main.Storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3F55DB421792DD8006BC76F /* Main.Storyboard */; };
+		F3F55DB521792DD8006BC76F /* first.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3F55DB421792DD8006BC76F /* first.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,7 +35,7 @@
 		F3E282A721460EBB009CE24C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F3E282AA21460EBB009CE24C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F3E282AC21460EBB009CE24C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F3F55DB421792DD8006BC76F /* Main.Storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.Storyboard; path = Controllers/Main.Storyboard; sourceTree = "<group>"; };
+		F3F55DB421792DD8006BC76F /* first.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = first.storyboard; path = Controllers/first.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,7 +110,7 @@
 				F3E282A021460EB9009CE24C /* AppDelegate.swift */,
 				F330436421473B9C008D911B /* Controllers */,
 				F34140D32147377E00A2ED29 /* ListPropertiesTableViewCell.swift */,
-				F3F55DB421792DD8006BC76F /* Main.Storyboard */,
+				F3F55DB421792DD8006BC76F /* first.storyboard */,
 				F3E282A721460EBB009CE24C /* Assets.xcassets */,
 				F3E282A921460EBB009CE24C /* LaunchScreen.storyboard */,
 				F32D00602177C09A00E81DCA /* GoogleService-Info.plist */,
@@ -181,7 +181,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F3F55DB521792DD8006BC76F /* Main.Storyboard in Resources */,
+				F3F55DB521792DD8006BC76F /* first.storyboard in Resources */,
 				F3E282AB21460EBB009CE24C /* LaunchScreen.storyboard in Resources */,
 				F32D00612177C09A00E81DCA /* GoogleService-Info.plist in Resources */,
 				F3E282A821460EBB009CE24C /* Assets.xcassets in Resources */,

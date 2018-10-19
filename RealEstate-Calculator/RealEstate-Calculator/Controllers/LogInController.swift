@@ -82,11 +82,17 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate 
                     self.dataProperties.append(childValue.value as! [String:[String:Double]])
                     print("Property data: ", self.dataProperties)
                 }
+                UserDefaults.standard.set(self.dataProperties, forKey: "properties")
+                UserDefaults.standard.set(true, forKey: "hasProperty")
+                UserDefaults.standard.synchronize()
+                print("New Data saved: ", UserDefaults.standard.array(forKey: "properties") as! [[String : [String : Double]]])
+                
+                // Move to property list
+                print("signed in")
+                self.performSegue(withIdentifier: "toAllProperties", sender: self)
             })
             
-            // Move to property list
-            print("signed in")
-            self.performSegue(withIdentifier: "toAllProperties", sender: self)
+
         }
         
     }
@@ -161,11 +167,11 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate 
     // Save/Write properties saved with userdefaults into Firebase Database as one array.
     func fukIt(userId: String, username: String, dictionary: [[String: [String: Double]]]) {
         print("SAVING DATA IN FIREBASE WITHIN fukIt().")
-        if dictionary == nil {
-            return
+        for array in dictionary {
+            Database.database().reference().child("users").child(userId).child("properties").updateChildValues(array)
         }
-        // Saving to Database
         Database.database().reference().child("users").child(userId).child("properties").setValue(dictionary)
+        
         
         print("Properties: ", dictionary)
     }
@@ -180,7 +186,6 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate 
         // Saving Data to Firebase database before closing app.
         fukIt(userId: userUID!, username: usernameSave!, dictionary: UserDefaults.standard.array(forKey: "properties") as! [[String : [String : Double]]])
         print("fukIt finished!")
-        
     }
 }
 

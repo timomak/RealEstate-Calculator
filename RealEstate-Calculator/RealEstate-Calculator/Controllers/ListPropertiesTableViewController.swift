@@ -30,13 +30,16 @@ class ListPropertiesTableViewController: UITableViewController {
         
     }
     // TODO: https://www.makeschool.com/academy/track/learn-to-program-in-swift-and-get-started-creating-your-own-apps-and-games-DEM=/learn-how-to-build-make-school-notes--v2/intro-table-view-0VM=
-    
+
     // Read saved Userdefaults values already saved and make them into a Property Class.
     func unwrapDictionary(dictionary: [[String: [String: Double]]]) {
+//        print("Beginning to unwrap")
         for array in dictionary {
+//            print("First array in dictionary in unwrap: ", array)
             for (name, dict) in array {
                 let newProperty = Property()
                 newProperty.name = name
+//                print("Making a new Property named: ", newProperty.name)
                 for (nameOfValue, value) in dict {
                     if nameOfValue == "price" {
                         newProperty.buyingPrice = value
@@ -61,6 +64,19 @@ class ListPropertiesTableViewController: UITableViewController {
             }
         }
     }
+    
+//    override func viewDidAppear(_ animated: Bool) {
+//        print("View did appear. Properties: ")
+//        print(UserDefaults.standard.array(forKey: "properties") as! [[String : [String : Double]]])
+//
+//        self.tableView.reloadData()
+//
+//            unwrapDictionary(dictionary: UserDefaults.standard.array(forKey: "properties") as! [[String : [String : Double]]])
+//
+//        self.tableView.reloadData()
+//        print("Properties: ", properties)
+//    }
+    
     
     // Delete UserDefaults saved properties by comparing their names and rest of the values.
     func deleteUserDefault(property: [String: [String: Double]]) {
@@ -138,8 +154,8 @@ class ListPropertiesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // If the app has properties, this will add them. Otherwise, the page should remain empty
-        if UserDefaults.standard.bool(forKey: "hasProperty") == true {
+//        if UserDefaults.standard.bool(forKey: "hasProperty") == true {
             unwrapDictionary(dictionary: UserDefaults.standard.array(forKey: "properties") as! [[String : [String : Double]]])
-        }
+//        }
     }
 }
