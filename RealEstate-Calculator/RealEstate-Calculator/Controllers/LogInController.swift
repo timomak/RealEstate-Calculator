@@ -9,12 +9,18 @@
 import UIKit
 import Firebase
 import GoogleSignIn
+import FirebaseDatabase
 
 // TODO: Handle UserDefualts sync from Firebase to Userdefaults after Login
 
 class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate  {
     // Connect to Firebase Database
     var ref: DatabaseReference!
+    // Handle the data from database
+    var dataHandle: DatabaseHandle?
+    
+    var dataProperties = [Any]()
+    
     var uid: String?
     var username: String?
     var email: String?
@@ -65,19 +71,34 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate 
             self.uid = Auth.auth().currentUser?.uid
             print("user successfully signed in through GOOGLE! uid:\(Auth.auth().currentUser!.email)")
             
-            // Connect firebase database
-            self.ref = Database.database().reference()
+            // Create new properties with the firebase database
+            let query = Database.database().reference().child("users").child(self.uid!).queryOrderedByPriority()
+            query.observe(.value, with: { snapshot in
+                for child in snapshot.children {
+                    let properties = child as! DataSnapshot
+                    for property in properties.children {
+                        var count = 0
+                        let allPropertiesName = property as! DataSnapshot
+                        for propertyName in allPropertiesName.children {
+                            let propertyNameValue = propertyName as! DataSnapshot
+                            print("Property name \(count): ", propertyNameValue.value as! [String:Any])
+                            count += 1
+                        }
+                    }
+                    
+                    
+//                    let snap = child as! DataSnapshot
+//                    let key = snap.key
+//                    let value = snap.value as? [Any]
+//                    self.dataProperties.append(value!)
+//                    print("key = \(key)  value = \(value!)")
+//                    print("Properties Data: ", self.dataProperties)
+                    
+                    
+                }
+            })
             
-            // Testing if database works.
-            //            self.ref.child("users").child(self.uid!).setValue(["username": self.username!])
-            
-            // Read saved Userdefaults and save/write into Firebase Database.
-            if UserDefaults.standard.array(forKey: "properties") != nil {
-                self.savePropertyArrayToFirebaseDatabase(userId: self.uid!, username: self.username!, dictionary: UserDefaults.standard.array(forKey: "properties") as! [[String : [String : Double]]])
-            }
-            
-            
-            
+            // Move to property list
             print("signed in")
             self.performSegue(withIdentifier: "toAllProperties", sender: self)
         }
@@ -153,14 +174,14 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate 
     
     // Save/Write properties saved with userdefaults into Firebase Database as one array.
     func fukIt(userId: String, username: String, dictionary: [[String: [String: Double]]]) {
-        
+        print("SAVING DATA IN FIREBASE WITHIN fukIt().")
         if dictionary == nil {
             return
         }
         // Saving to Database
-            Database.database().reference().child("users/\(userId)/\(username)/properties").setValue(dictionary)
-            
-            print("Properties: ", dictionary)
+        Database.database().reference().child("users").child(userId).child("properties").setValue(dictionary)
+        
+        print("Properties: ", dictionary)
     }
     
     func appClosingSaveDataToFireBase() {
@@ -169,10 +190,11 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate 
         print("Login Username: ", usernameSave!)
         let userUID = Auth.auth().currentUser?.uid
         print("User ID: ", userUID!)
-
+        
         // Saving Data to Firebase database before closing app.
         fukIt(userId: userUID!, username: usernameSave!, dictionary: UserDefaults.standard.array(forKey: "properties") as! [[String : [String : Double]]])
-
+        print("fukIt finished!")
+        
     }
 }
 
