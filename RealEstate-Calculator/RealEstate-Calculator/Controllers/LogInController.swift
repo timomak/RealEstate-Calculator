@@ -19,7 +19,7 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate 
     // Handle the data from database
     var dataHandle: DatabaseHandle?
     
-    var dataProperties = [Any]()
+    var dataProperties: [[String:[String:Double]]] = []
     
     var uid: String?
     var username: String?
@@ -72,29 +72,15 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate 
             print("user successfully signed in through GOOGLE! uid:\(Auth.auth().currentUser!.email)")
             
             // Create new properties with the firebase database
-            let query = Database.database().reference().child("users").child(self.uid!).queryOrderedByPriority()
+            let query = Database.database().reference().child("users").child(self.uid!).child("properties").queryOrderedByPriority()
             query.observe(.value, with: { snapshot in
+                var count = 0
                 for child in snapshot.children {
-                    let properties = child as! DataSnapshot
-                    for property in properties.children {
-                        var count = 0
-                        let allPropertiesName = property as! DataSnapshot
-                        for propertyName in allPropertiesName.children {
-                            let propertyNameValue = propertyName as! DataSnapshot
-                            print("Property name \(count): ", propertyNameValue.value as! [String:Any])
-                            count += 1
-                        }
-                    }
-                    
-                    
-//                    let snap = child as! DataSnapshot
-//                    let key = snap.key
-//                    let value = snap.value as? [Any]
-//                    self.dataProperties.append(value!)
-//                    print("key = \(key)  value = \(value!)")
-//                    print("Properties Data: ", self.dataProperties)
-                    
-                    
+                    let childValue = child as! DataSnapshot
+//                    print("Property value \(count): ", childValue.value as! [String:[String:Double]])
+                    // TODO: Save childValue.value as Properties into UserDefaults
+                    self.dataProperties.append(childValue.value as! [String:[String:Double]])
+                    print("Property data: ", self.dataProperties)
                 }
             })
             
