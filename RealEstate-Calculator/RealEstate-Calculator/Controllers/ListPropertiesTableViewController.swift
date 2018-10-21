@@ -13,6 +13,7 @@ import Firebase
 
 
 class ListPropertiesTableViewController: UITableViewController {
+    let logInController = LoginController()
     var properties = [Property](){
         didSet {
             tableView.reloadData()
@@ -22,6 +23,9 @@ class ListPropertiesTableViewController: UITableViewController {
     // Connect to Firebase Database
     var ref: DatabaseReference!
     
+    @IBAction func syncWithFireBaseData(_ sender: Any) {
+        syncWithFirebaseDatabase()
+    }
     // Not sure what this does but without it code won't work.
     @IBAction func unwindToListNotesViewController(segue: UIStoryboardSegue) {
         
@@ -156,6 +160,14 @@ class ListPropertiesTableViewController: UITableViewController {
         // If the app has properties, this will add them. Otherwise, the page should remain empty
 //        if UserDefaults.standard.bool(forKey: "hasProperty") == true {
         if let _ = UserDefaults.standard.array(forKey: "properties") as? [[String : [String : Double]]] {
+            unwrapDictionary(dictionary: UserDefaults.standard.array(forKey: "properties") as! [[String : [String : Double]]])
+        }
+        syncWithFirebaseDatabase()
+    }
+    func syncWithFirebaseDatabase(){
+        logInController.saveLocallyTheDataFromFirebase()
+        if let _ = UserDefaults.standard.array(forKey: "properties") as? [[String : [String : Double]]] {
+            properties = []
             unwrapDictionary(dictionary: UserDefaults.standard.array(forKey: "properties") as! [[String : [String : Double]]])
         }
     }

@@ -72,26 +72,10 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate 
             print("user successfully signed in through GOOGLE! uid:\(Auth.auth().currentUser!.email)")
             
             // Create new properties with the firebase database
-            let query = Database.database().reference().child("users").child(self.uid!).child("properties").queryOrderedByPriority()
-            query.observe(.value, with: { snapshot in
-                var count = 0
-                for child in snapshot.children {
-                    let childValue = child as! DataSnapshot
-//                    print("Property value \(count): ", childValue.value as! [String:[String:Double]])
-                    // TODO: Save childValue.value as Properties into UserDefaults
-                    self.dataProperties.append(childValue.value as! [String:[String:Double]])
-                    print("Property data: ", self.dataProperties)
-                }
-                UserDefaults.standard.set(self.dataProperties, forKey: "properties")
-                UserDefaults.standard.set(true, forKey: "hasProperty")
-                UserDefaults.standard.synchronize()
-                print("New Data saved: ", UserDefaults.standard.array(forKey: "properties") as! [[String : [String : Double]]])
-                
-                // Move to property list
-                print("signed in")
-                self.performSegue(withIdentifier: "toAllProperties", sender: self)
-            })
-            
+            self.saveLocallyTheDataFromFirebase()
+            // Move to property list
+            print("signed in")
+            self.performSegue(withIdentifier: "toAllProperties", sender: self)
 
         }
         
@@ -165,8 +149,8 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate 
     
     
     // Save/Write properties saved with userdefaults into Firebase Database as one array.
-    func fukIt(userId: String, username: String, dictionary: [[String: [String: Double]]]) {
-        print("SAVING DATA IN FIREBASE WITHIN fukIt().")
+    func sendAllPropertiesToFirebaseDatabase(userId: String, username: String, dictionary: [[String: [String: Double]]]) {
+        print("SAVING DATA IN FIREBASE WITHIN sendAllPropertiesToFirebaseDatabase().")
         // Saving to Database
         Database.database().reference().child("users").child(userId).child("properties").setValue(dictionary)
         
@@ -176,14 +160,60 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate 
     func appClosingSaveDataToFireBase() {
         print("I AM SAVING THE DATA TO DATABASE")
         let usernameSave = Auth.auth().currentUser?.displayName
-        print("Login Username: ", usernameSave!)
         let userUID = Auth.auth().currentUser?.uid
-        print("User ID: ", userUID!)
         
         // Saving Data to Firebase database before closing app.
-        fukIt(userId: userUID!, username: usernameSave!, dictionary: UserDefaults.standard.array(forKey: "properties") as! [[String : [String : Double]]])
-        print("fukIt finished!")
+        sendAllPropertiesToFirebaseDatabase(userId: userUID!, username: usernameSave!, dictionary: UserDefaults.standard.array(forKey: "properties") as! [[String : [String : Double]]])
+        print("sendAllPropertiesToFirebaseDatabase() finished!")
         
+    }
+    
+    func saveLocallyTheDataFromFirebase() {
+        let usernameSave = Auth.auth().currentUser?.displayName
+        let userUID = Auth.auth().currentUser?.uid
+        print("Setting query Path and saving firebase data Locally")
+        // Create new properties with the firebase database
+        // Add a path to the data using the user info
+        let query = Database.database().reference().child("users").child(userUID!).child("properties").queryOrderedByPriority()
+        
+        // Using the path, find the user data.
+        query.observe(.value, with: { snapshot in
+            // If there is data already, make the data into an array and save it as userdefaults.
+            if let snapshotValue = snapshot.value as? [[String:[String:Double]]] {
+//                print("The super cool, super array works!")
+//                print("Snapshot value as super array: ", snapshotValue)
+                self.dataProperties = snapshotValue
+//                print("dataProperties value as super array: ", self.dataProperties)
+                UserDefaults.standard.set(self.dataProperties, forKey: "properties")
+                // Making sure that the rest of the app knows that there are properties already in the app.
+                UserDefaults.standard.set(true, forKey: "hasProperty")
+                UserDefaults.standard.synchronize()
+//                print("New Data saved: ", UserDefaults.standard.array(forKey: "properties") as! [[String : [String : Double]]])
+            }
+        })
+    }
+    
+    func addNewPropertyInFirebaseDatabaseAndLocally(array:[String : [String : Double]]) {
+        print("Adding new Property to firebase database")
+        print("Property: ", array)
+        let usernameSave = Auth.auth().currentUser?.displayName
+        let userUID = Auth.auth().currentUser?.uid
+        
+        // Get properties from database to the app
+        saveLocallyTheDataFromFirebase()
+        
+        // Setting local variable to saved database properties array
+        dataProperties = UserDefaults.standard.array(forKey: "properties") as! [[String : [String : Double]]]
+        print("Data Properties before Adding new property: ", dataProperties)
+        
+        // Add new properties
+        dataProperties.append(array)
+        print("Data Properties after Adding new property: ", dataProperties)
+        UserDefaults.standard.set(dataProperties, forKey: "properties")
+        UserDefaults.standard.synchronize()
+        
+        // Upload the new list of properties
+        sendAllPropertiesToFirebaseDatabase(userId: userUID!, username: usernameSave!, dictionary: dataProperties)
     }
 }
 

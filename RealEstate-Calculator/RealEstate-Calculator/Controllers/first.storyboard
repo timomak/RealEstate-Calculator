@@ -55,6 +55,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Properties" id="Nn5-fe-Q2d">
+                        <barButtonItem key="leftBarButtonItem" title="Sync" id="G5s-zt-1Rg">
+                            <connections>
+                                <action selector="syncWithFireBaseData:" destination="EjR-lO-rDW" id="nKI-hl-Fx0"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="cM3-06-Ic0" userLabel="Add">
                             <connections>
                                 <segue destination="BYZ-38-t0r" kind="show" identifier="addProperty" id="TT1-Sa-1ad"/>

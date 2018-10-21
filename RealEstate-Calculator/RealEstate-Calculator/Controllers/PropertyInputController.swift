@@ -10,7 +10,6 @@
 import UIKit
 
 class PropertyInputController: UIViewController {
-//    var properties:[Int] = [1,2,34,5]
     var property: Property?
 
     // User has to input these items.
@@ -131,6 +130,7 @@ class PropertyInputController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         calculateVariables()
         let listPropertiesTableViewController = segue.destination as! ListPropertiesTableViewController
+        let logInController = LoginController()
         
         if segue.identifier == "Save" {
             print("Save button tapped")
@@ -145,7 +145,8 @@ class PropertyInputController: UIViewController {
                 editedProperty.yearlyFees = Double(yearlyFeesTextField.text!)!
                 editedProperty.valueGrowth = Double(valueGrowthTextField.text!)!
                 
-                saveDictionary(array: editedProperty.getDictionary())
+//                saveDictionary(array: editedProperty.getDictionary())
+                logInController.addNewPropertyInFirebaseDatabaseAndLocally(array: editedProperty.getDictionary())
                 listPropertiesTableViewController.tableView.reloadData()
             }
             // Else update the already existing property.
@@ -161,8 +162,8 @@ class PropertyInputController: UIViewController {
 
                 // Get the values of the new property from class method.
                 // Add the new property to UserDefaults
-                saveDictionary(array:newProperty.getDictionary())
-                
+//                saveDictionary(array:newProperty.getDictionary())
+                logInController.addNewPropertyInFirebaseDatabaseAndLocally(array: newProperty.getDictionary())
                 // Add property to properties to be displayed in the first view.
                 listPropertiesTableViewController.properties.append(newProperty)
                 
