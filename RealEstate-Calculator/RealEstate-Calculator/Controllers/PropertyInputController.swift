@@ -144,7 +144,6 @@ class PropertyInputController: UIViewController {
                 editedProperty.propertyTax = Double(propertyTaxTextField.text!)!
                 editedProperty.yearlyFees = Double(yearlyFeesTextField.text!)!
                 editedProperty.valueGrowth = Double(valueGrowthTextField.text!)!
-                
 //                saveDictionary(array: editedProperty.getDictionary())
                 logInController.addNewPropertyInFirebaseDatabaseAndLocally(array: editedProperty.getDictionary())
                 listPropertiesTableViewController.tableView.reloadData()

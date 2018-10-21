@@ -153,7 +153,6 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate 
         print("SAVING DATA IN FIREBASE WITHIN sendAllPropertiesToFirebaseDatabase().")
         // Saving to Database
         Database.database().reference().child("users").child(userId).child("properties").setValue(dictionary)
-        
         print("Properties: ", dictionary)
     }
     
@@ -176,6 +175,7 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate 
         // Add a path to the data using the user info
         let query = Database.database().reference().child("users").child(userUID!).child("properties").queryOrderedByPriority()
         
+                
         // Using the path, find the user data.
         query.observe(.value, with: { snapshot in
             // If there is data already, make the data into an array and save it as userdefaults.
@@ -209,6 +209,27 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate 
         // Add new properties
         dataProperties.append(array)
         print("Data Properties after Adding new property: ", dataProperties)
+        UserDefaults.standard.set(dataProperties, forKey: "properties")
+        UserDefaults.standard.synchronize()
+        
+        // Upload the new list of properties
+        sendAllPropertiesToFirebaseDatabase(userId: userUID!, username: usernameSave!, dictionary: dataProperties)
+    }
+    
+    func removeProperyInFirebaseDatabaseAndLocally(removeAt: Int, array:[String : [String : Double]]) {
+        print("Removing Property from firebase database")
+        print("Property: ", array)
+        let usernameSave = Auth.auth().currentUser?.displayName
+        let userUID = Auth.auth().currentUser?.uid
+        
+        // Get properties from database to the app
+        saveLocallyTheDataFromFirebase()
+        
+        // Setting local variable to saved database properties array
+        dataProperties = UserDefaults.standard.array(forKey: "properties") as! [[String : [String : Double]]]
+        
+        // Remove the property
+        dataProperties.remove(at: removeAt)
         UserDefaults.standard.set(dataProperties, forKey: "properties")
         UserDefaults.standard.synchronize()
         

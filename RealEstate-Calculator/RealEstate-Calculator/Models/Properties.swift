@@ -19,6 +19,7 @@ class Property {
     var propertyTax: Double = 0.0
     var yearlyFees: Double = 0.0
     var valueGrowth: Double = 0.0
+    var dataBaseId: String = ""
     
     // Function to return property in JSON format to be able to store it with UserDefaults
     func getDictionary() -> [String: [String: Double]] {

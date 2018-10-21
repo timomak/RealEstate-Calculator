@@ -105,8 +105,12 @@ class ListPropertiesTableViewController: UITableViewController {
         if editingStyle == UITableViewCell.EditingStyle.delete {
             
             // Deletes User Default Property
-            deleteUserDefault(property: self.properties[indexPath.row].getDictionary())
-            self.properties.remove(at: indexPath.row)
+//            deleteUserDefault(property: self.properties[indexPath.row].getDictionary())
+//            self.properties.remove(at: indexPath.row)
+            
+            logInController.removeProperyInFirebaseDatabaseAndLocally(removeAt: indexPath.row, array: self.properties[indexPath.row].getDictionary())
+            syncWithFirebaseDatabase()
+//            print("Index row: ", indexPath.row)
             self.tableView.reloadData()
         }
         
