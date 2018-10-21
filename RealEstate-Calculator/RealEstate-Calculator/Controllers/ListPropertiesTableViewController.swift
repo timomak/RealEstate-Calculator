@@ -124,8 +124,10 @@ class ListPropertiesTableViewController: UITableViewController {
                 // 2
                 let property = properties[indexPath.row]
                 // 3
+                let selectedRow = indexPath.row
                 let propertyInputController = segue.destination as! PropertyInputController
                 // 4
+                propertyInputController.selectedRow = selectedRow
                 propertyInputController.property = property
             } else if segue.identifier == "addProperty" {
                 print("+ button tapped")

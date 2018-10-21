@@ -76,7 +76,7 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate 
             // Move to property list
             print("signed in")
             self.performSegue(withIdentifier: "toAllProperties", sender: self)
-
+            
         }
         
     }
@@ -175,20 +175,20 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate 
         // Add a path to the data using the user info
         let query = Database.database().reference().child("users").child(userUID!).child("properties").queryOrderedByPriority()
         
-                
+        
         // Using the path, find the user data.
         query.observe(.value, with: { snapshot in
             // If there is data already, make the data into an array and save it as userdefaults.
             if let snapshotValue = snapshot.value as? [[String:[String:Double]]] {
-//                print("The super cool, super array works!")
-//                print("Snapshot value as super array: ", snapshotValue)
+                //                print("The super cool, super array works!")
+                //                print("Snapshot value as super array: ", snapshotValue)
                 self.dataProperties = snapshotValue
-//                print("dataProperties value as super array: ", self.dataProperties)
+                print("dataProperties value as super array: ", self.dataProperties)
                 UserDefaults.standard.set(self.dataProperties, forKey: "properties")
                 // Making sure that the rest of the app knows that there are properties already in the app.
                 UserDefaults.standard.set(true, forKey: "hasProperty")
                 UserDefaults.standard.synchronize()
-//                print("New Data saved: ", UserDefaults.standard.array(forKey: "properties") as! [[String : [String : Double]]])
+                //                print("New Data saved: ", UserDefaults.standard.array(forKey: "properties") as! [[String : [String : Double]]])
             }
         })
     }
@@ -203,7 +203,9 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate 
         saveLocallyTheDataFromFirebase()
         
         // Setting local variable to saved database properties array
-        dataProperties = UserDefaults.standard.array(forKey: "properties") as! [[String : [String : Double]]]
+        if UserDefaults.standard.array(forKey: "properties") as? [[String : [String : Double]]] != nil {
+            dataProperties = UserDefaults.standard.array(forKey: "properties") as! [[String : [String : Double]]]
+        }
         print("Data Properties before Adding new property: ", dataProperties)
         
         // Add new properties
@@ -230,6 +232,30 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate 
         
         // Remove the property
         dataProperties.remove(at: removeAt)
+        UserDefaults.standard.set(dataProperties, forKey: "properties")
+        UserDefaults.standard.synchronize()
+        
+        // Upload the new list of properties
+        sendAllPropertiesToFirebaseDatabase(userId: userUID!, username: usernameSave!, dictionary: dataProperties)
+    }
+    
+    func updateProperyInFirebaseDatabaseAndLocally(updateAt: Int, array:[String : [String : Double]]) {
+        print("Updating Property in firebase database")
+        print("Property: ", array)
+        let usernameSave = Auth.auth().currentUser?.displayName
+        let userUID = Auth.auth().currentUser?.uid
+        //
+        // Get properties from database to the app
+        saveLocallyTheDataFromFirebase()
+        
+        // Setting local variable to saved database properties array
+        dataProperties = UserDefaults.standard.array(forKey: "properties") as! [[String : [String : Double]]]
+        print("Data Properties before insert: ", dataProperties)
+        // Update the property
+        dataProperties.insert(array, at: updateAt)
+        print("Data Properties : ", dataProperties)
+        var afterUpdate = updateAt + 1
+        dataProperties.remove(at: afterUpdate)
         UserDefaults.standard.set(dataProperties, forKey: "properties")
         UserDefaults.standard.synchronize()
         

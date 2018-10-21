@@ -11,7 +11,7 @@ import UIKit
 
 class PropertyInputController: UIViewController {
     var property: Property?
-
+    var selectedRow: Int?
     // User has to input these items.
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var buyingPriceTextField: UITextField!
@@ -131,12 +131,11 @@ class PropertyInputController: UIViewController {
         calculateVariables()
         let listPropertiesTableViewController = segue.destination as! ListPropertiesTableViewController
         let logInController = LoginController()
-        
         if segue.identifier == "Save" {
             print("Save button tapped")
             // If the property already exists, input the existing values.
             if let editedProperty = property {
-                listPropertiesTableViewController.deleteUserDefault(property: editedProperty.getDictionary())
+//                listPropertiesTableViewController.deleteUserDefault(property: editedProperty.getDictionary())
                 editedProperty.name = nameTextField.text ?? ""
                 editedProperty.buyingPrice = Double(buyingPriceTextField.text!)!
                 editedProperty.rent = Double(rentTextField.text!)!
@@ -145,7 +144,8 @@ class PropertyInputController: UIViewController {
                 editedProperty.yearlyFees = Double(yearlyFeesTextField.text!)!
                 editedProperty.valueGrowth = Double(valueGrowthTextField.text!)!
 //                saveDictionary(array: editedProperty.getDictionary())
-                logInController.addNewPropertyInFirebaseDatabaseAndLocally(array: editedProperty.getDictionary())
+//                logInController.addNewPropertyInFirebaseDatabaseAndLocally(array: editedProperty.getDictionary())
+                logInController.updateProperyInFirebaseDatabaseAndLocally(updateAt: selectedRow!, array: editedProperty.getDictionary())
                 listPropertiesTableViewController.tableView.reloadData()
             }
             // Else update the already existing property.
