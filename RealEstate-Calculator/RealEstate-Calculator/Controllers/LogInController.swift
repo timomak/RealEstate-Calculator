@@ -167,11 +167,8 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate 
     // Save/Write properties saved with userdefaults into Firebase Database as one array.
     func fukIt(userId: String, username: String, dictionary: [[String: [String: Double]]]) {
         print("SAVING DATA IN FIREBASE WITHIN fukIt().")
-        for array in dictionary {
-            Database.database().reference().child("users").child(userId).child("properties").updateChildValues(array)
-        }
+        // Saving to Database
         Database.database().reference().child("users").child(userId).child("properties").setValue(dictionary)
-        
         
         print("Properties: ", dictionary)
     }
@@ -186,6 +183,7 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate 
         // Saving Data to Firebase database before closing app.
         fukIt(userId: userUID!, username: usernameSave!, dictionary: UserDefaults.standard.array(forKey: "properties") as! [[String : [String : Double]]])
         print("fukIt finished!")
+        
     }
 }
 

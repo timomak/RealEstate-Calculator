@@ -155,7 +155,8 @@ class ListPropertiesTableViewController: UITableViewController {
         super.viewDidLoad()
         // If the app has properties, this will add them. Otherwise, the page should remain empty
 //        if UserDefaults.standard.bool(forKey: "hasProperty") == true {
+        if let _ = UserDefaults.standard.array(forKey: "properties") as? [[String : [String : Double]]] {
             unwrapDictionary(dictionary: UserDefaults.standard.array(forKey: "properties") as! [[String : [String : Double]]])
-//        }
+        }
     }
 }
