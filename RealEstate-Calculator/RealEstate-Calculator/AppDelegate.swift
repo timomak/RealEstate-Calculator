@@ -23,6 +23,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Google account logIn
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         
+        // additing navigation controller
+//        window = UIWindow()
+//        window?.makeKeyAndVisible()
+//
+//        let navController = UINavigationController(rootViewController: LoginController())
+//
+//        window?.rootViewController = navController
         
         return true
     }

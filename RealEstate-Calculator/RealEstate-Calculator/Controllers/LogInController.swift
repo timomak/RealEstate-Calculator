@@ -18,6 +18,10 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate 
     var ref: DatabaseReference!
     // Handle the data from database
     var dataHandle: DatabaseHandle?
+    // Sign out from google on button press
+//    @IBAction func didTapSignOut(_ sender: AnyObject) {
+//        GIDSignIn.sharedInstance().signOut()
+//    }
     
     var dataProperties: [[String:[String:Double]]] = []
     
@@ -30,6 +34,7 @@ class LoginController: UIViewController, GIDSignInUIDelegate, GIDSignInDelegate 
         
         setupGoogleButtons()
         // Connect Google Sign in from delegate and Sign in user.
+        var googleSignInButton: GIDSignInButtonStyle
         
         // TODO: Configure the sign-in button look/feel
     }

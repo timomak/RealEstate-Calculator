@@ -33,7 +33,6 @@ class ListPropertiesTableViewController: UITableViewController {
         // we'll add code later
         
     }
-    // TODO: https://www.makeschool.com/academy/track/learn-to-program-in-swift-and-get-started-creating-your-own-apps-and-games-DEM=/learn-how-to-build-make-school-notes--v2/intro-table-view-0VM=
 
     // Read saved Userdefaults values already saved and make them into a Property Class.
     func unwrapDictionary(dictionary: [[String: [String: Double]]]) {
@@ -62,25 +61,15 @@ class ListPropertiesTableViewController: UITableViewController {
                     else if nameOfValue == "growth" {
                         newProperty.valueGrowth = value
                     }
+                    else if nameOfValue == "squaredFeet" {
+                        newProperty.squaredFeet = value
+                    }
                     print("Name: \(name) [\(nameOfValue): \(value)]")
                 }
                 properties.append(newProperty)
             }
         }
     }
-    
-//    override func viewDidAppear(_ animated: Bool) {
-//        print("View did appear. Properties: ")
-//        print(UserDefaults.standard.array(forKey: "properties") as! [[String : [String : Double]]])
-//
-//        self.tableView.reloadData()
-//
-//            unwrapDictionary(dictionary: UserDefaults.standard.array(forKey: "properties") as! [[String : [String : Double]]])
-//
-//        self.tableView.reloadData()
-//        print("Properties: ", properties)
-//    }
-    
     
     // Delete UserDefaults saved properties by comparing their names and rest of the values.
     func deleteUserDefault(property: [String: [String: Double]]) {
@@ -103,11 +92,6 @@ class ListPropertiesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
         if editingStyle == UITableViewCell.EditingStyle.delete {
-            
-            // Deletes User Default Property
-//            deleteUserDefault(property: self.properties[indexPath.row].getDictionary())
-//            self.properties.remove(at: indexPath.row)
-            
             logInController.removeProperyInFirebaseDatabaseAndLocally(removeAt: indexPath.row, array: self.properties[indexPath.row].getDictionary())
             syncWithFirebaseDatabase()
 //            print("Index row: ", indexPath.row)

@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:CellTableViewCell.swift">
+   </FileRef>
+   <FileRef
       location = "group:RealEstate-Calculator.xcodeproj">
    </FileRef>
    <FileRef

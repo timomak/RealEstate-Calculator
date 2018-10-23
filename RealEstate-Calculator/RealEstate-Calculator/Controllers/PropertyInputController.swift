@@ -20,8 +20,10 @@ class PropertyInputController: UIViewController {
     @IBOutlet weak var propertyTaxTextField: UITextField!
     @IBOutlet weak var yearlyFeesTextField: UITextField!
     @IBOutlet weak var valueGrowthTextField: UITextField!
+    @IBOutlet weak var squaredFeetTextField: UITextField!
     
     // App will calculate.
+    @IBOutlet weak var pricePerSquareFoot: UITextField!
     @IBOutlet weak var totalTaxTextField: UITextField!
     @IBOutlet weak var afterTaxAndFeesIncomeYearlyTextField: UITextField!
     @IBOutlet weak var afterTaxAndFeesIncomeMonthlyTextField: UITextField!
@@ -29,50 +31,6 @@ class PropertyInputController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         calculateVariables()
-    }
-    
-    func saveDictionary(array:[String : [String : Double]]) {
-        // If the app has no properties it will create a new array.
-        if UserDefaults.standard.bool(forKey: "hasProperty") != true {
-            print("Creating new array!")
-            var defaultsarray = [[String : [String : Double]]]()
-            defaultsarray.append(array)
-            UserDefaults.standard.set(defaultsarray, forKey: "properties")
-            UserDefaults.standard.synchronize()
-            print("User defaults : ", UserDefaults.standard.array(forKey: "properties") as Any)
-        }
-        // If the app already has properties, it will add the new property to the array.
-        else {
-            print("Adding to array!")
-            var defaultsarray = UserDefaults.standard.array(forKey: "properties")!
-            defaultsarray.append(array)
-            UserDefaults.standard.set(defaultsarray, forKey: "properties")
-            UserDefaults.standard.synchronize()
-            print("User defaults : ", UserDefaults.standard.array(forKey: "properties") as Any)
-        }
-    }
-    
-    // Updating saved with UserDefaults property function
-    func updatePropertyDefaults(oldProperty: [String: [String: Double]], newProperty: [String: [String: Double]]) {
-        print("The update is running")
-        let dictionary = UserDefaults.standard.array(forKey: "properties") as! [[String : [String : Double]]]
-        print("Dictionary: ", dictionary)
-        for array in dictionary {
-            for (var name, var dict) in array {
-                for (oldPropertyName, oldPropertyValues) in oldProperty {
-                    print("Working on Unwrapping old property: ", oldProperty)
-                    if name == oldPropertyName && dict == oldPropertyValues {
-                        print("The old property and original match!")
-                        for (newPropertyName, newPropertyValues) in newProperty {
-                            name = newPropertyName
-                            dict = newPropertyValues
-                            UserDefaults.standard.set(dictionary,forKey: "properties")
-                            UserDefaults.standard.synchronize()
-                        }
-                    }
-                }
-            }
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -90,6 +48,7 @@ class PropertyInputController: UIViewController {
             propertyTaxTextField.text = String(property.propertyTax)
             yearlyFeesTextField.text = String(property.yearlyFees)
             valueGrowthTextField.text = String(property.valueGrowth)
+            squaredFeetTextField.text = String(property.squaredFeet)
         } else {
             // Else if the property is new, the values will be empty.
             nameTextField.text = ""
@@ -99,13 +58,18 @@ class PropertyInputController: UIViewController {
             propertyTaxTextField.text = ""
             yearlyFeesTextField.text = ""
             valueGrowthTextField.text = ""
+            squaredFeetTextField.text = ""
         }
     }
     
     func calculateVariables() {
         print("Calculating function running.")
         // Calculating Building tax.
-        if let buildingTax = Double(buildingTaxTextField.text!), let propertyTax = Double(propertyTaxTextField.text!), let rent = Double(rentTextField.text!) {
+        if let buildingTax = Double(buildingTaxTextField.text!), let propertyTax = Double(propertyTaxTextField.text!), let rent = Double(rentTextField.text!), let buyingPrice = Double(buyingPriceTextField.text!), let squareFeet = Double(squaredFeetTextField.text!) {
+            
+            
+            let costPerSquareFoot = buyingPrice / squareFeet
+            pricePerSquareFoot.text = String(format: "%.2f", costPerSquareFoot)
             
             // Yearly Tax
             let totalTax = buildingTax + propertyTax
@@ -135,7 +99,6 @@ class PropertyInputController: UIViewController {
             print("Save button tapped")
             // If the property already exists, input the existing values.
             if let editedProperty = property {
-//                listPropertiesTableViewController.deleteUserDefault(property: editedProperty.getDictionary())
                 editedProperty.name = nameTextField.text ?? ""
                 editedProperty.buyingPrice = Double(buyingPriceTextField.text!)!
                 editedProperty.rent = Double(rentTextField.text!)!
@@ -143,8 +106,8 @@ class PropertyInputController: UIViewController {
                 editedProperty.propertyTax = Double(propertyTaxTextField.text!)!
                 editedProperty.yearlyFees = Double(yearlyFeesTextField.text!)!
                 editedProperty.valueGrowth = Double(valueGrowthTextField.text!)!
-//                saveDictionary(array: editedProperty.getDictionary())
-//                logInController.addNewPropertyInFirebaseDatabaseAndLocally(array: editedProperty.getDictionary())
+                editedProperty.squaredFeet = Double(squaredFeetTextField.text!)!
+
                 logInController.updateProperyInFirebaseDatabaseAndLocally(updateAt: selectedRow!, array: editedProperty.getDictionary())
                 listPropertiesTableViewController.tableView.reloadData()
             }
@@ -158,10 +121,10 @@ class PropertyInputController: UIViewController {
                 newProperty.propertyTax = Double(propertyTaxTextField.text ?? "0") ?? 0.00
                 newProperty.yearlyFees = Double(yearlyFeesTextField.text ?? "0") ?? 0.00
                 newProperty.valueGrowth = Double(valueGrowthTextField.text ?? "0") ?? 0.00
-
+                newProperty.squaredFeet = Double(squaredFeetTextField.text ?? "0") ?? 0.00
+                
                 // Get the values of the new property from class method.
                 // Add the new property to UserDefaults
-//                saveDictionary(array:newProperty.getDictionary())
                 logInController.addNewPropertyInFirebaseDatabaseAndLocally(array: newProperty.getDictionary())
                 // Add property to properties to be displayed in the first view.
                 listPropertiesTableViewController.properties.append(newProperty)

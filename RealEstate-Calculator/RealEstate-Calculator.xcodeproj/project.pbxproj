@@ -85,6 +85,14 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		F3306248217E79280000EAB6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F34140D32147377E00A2ED29 /* ListPropertiesTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		F3E2829421460EB9009CE24C = {
 			isa = PBXGroup;
 			children = (
@@ -107,9 +115,9 @@
 			isa = PBXGroup;
 			children = (
 				F303C5EB214756790019FC25 /* Models */,
-				F3E282A021460EB9009CE24C /* AppDelegate.swift */,
+				F3306248217E79280000EAB6 /* View */,
 				F330436421473B9C008D911B /* Controllers */,
-				F34140D32147377E00A2ED29 /* ListPropertiesTableViewCell.swift */,
+				F3E282A021460EB9009CE24C /* AppDelegate.swift */,
 				F3F55DB421792DD8006BC76F /* first.storyboard */,
 				F3E282A721460EBB009CE24C /* Assets.xcassets */,
 				F3E282A921460EBB009CE24C /* LaunchScreen.storyboard */,
@@ -417,17 +425,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4CZ8YXN766;
+				DEVELOPMENT_TEAM = SAZ2DLKCVY;
 				INFOPLIST_FILE = "RealEstate-Calculator/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Timofey-Makhlay.RealEstate-Calculator";
+				PRODUCT_BUNDLE_IDENTIFIER = "timofey.RealEstate-Calculator";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -437,17 +445,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4CZ8YXN766;
+				DEVELOPMENT_TEAM = SAZ2DLKCVY;
 				INFOPLIST_FILE = "RealEstate-Calculator/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Timofey-Makhlay.RealEstate-Calculator";
+				PRODUCT_BUNDLE_IDENTIFIER = "timofey.RealEstate-Calculator";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
