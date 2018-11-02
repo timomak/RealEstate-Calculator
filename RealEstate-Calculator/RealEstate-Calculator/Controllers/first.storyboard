@@ -115,6 +115,11 @@
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="height">
+                                <integer key="value" value="20"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eii-VL-6Zy" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -130,7 +135,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="23" translatesAutoresizingMaskIntoConstraints="NO" id="naO-WN-E7S">
-                                <rect key="frame" x="5" y="162" width="365" height="566"/>
+                                <rect key="frame" x="5" y="110" width="365" height="618"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="124" translatesAutoresizingMaskIntoConstraints="NO" id="HR9-Ch-HNu">
                                         <rect key="frame" x="0.0" y="0.0" width="365" height="30"/>
@@ -320,16 +325,16 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="1pW-7J-2hl">
-                                        <rect key="frame" x="0.0" y="514" width="365" height="9"/>
+                                        <rect key="frame" x="0.0" y="514" width="365" height="61"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monthly Rent Income" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FtN-Y3-lPV">
-                                                <rect key="frame" x="0.0" y="0.0" width="162" height="9"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="162" height="61"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SLT-UW-DuN" userLabel="Tax Text Field">
-                                                <rect key="frame" x="163" y="0.0" width="202" height="9"/>
+                                                <rect key="frame" x="163" y="0.0" width="202" height="61"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -337,7 +342,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="59" translatesAutoresizingMaskIntoConstraints="NO" id="wZf-il-kzm">
-                                        <rect key="frame" x="0.0" y="546" width="365" height="20"/>
+                                        <rect key="frame" x="0.0" y="598" width="365" height="20"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Income" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eca-ab-RkV">
                                                 <rect key="frame" x="0.0" y="0.0" width="97.666666666666671" height="20"/>
@@ -371,7 +376,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Property Stats" id="cVa-zu-vbC">
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="cVa-zu-vbC">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="BOr-Zj-Nhy">
                             <connections>
                                 <segue destination="lFk-n1-PPy" kind="unwind" identifier="Cancel" unwindAction="unwindToListNotesViewControllerWithSegue:" id="YLp-4J-k0K"/>
@@ -434,7 +439,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="64m-eq-8fS" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="QNw-V2-5HR">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="blackTranslucent" largeTitles="YES" id="QNw-V2-5HR">
                         <rect key="frame" x="0.0" y="44" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
